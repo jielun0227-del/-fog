@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IP 纯净度怎么看？ChatGPT 报异常、Netflix 不解锁的节点排查指南 - 机场Fog 测评博客</title>
+    <meta name="description" content="节点能连上但 ChatGPT 提示 unusual activity、Netflix 打不开、Claude 拒绝访问？本文深入剖析 IP 纯净度定义、原生 IP 与广播 IP 区别、住宅 IP 适用场景以及节点风控排查工具与选型技巧。">
+    <meta name="keywords" content="IP纯净度, 原生IP, 广播IP, 住宅IP, ChatGPT节点异常, Netflix解锁, IP风控检测, 机场节点选择">
+    <meta name="geo.region" content="CN" />
+    <meta name="geo.placename" content="China" />
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="article-page-body">
+
+    <!-- 顶部导航栏 -->
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="logo">
+          <span class="logo-text">机场Fog</span>
+        </a>
+        <nav class="nav-links">
+          <a href="../index.html">机场推荐</a>
+          <a href="../knowledge.html">知识库</a>
+          <a href="../articles.html">文章科普</a>
+          <a href="../reviews.html">详细评测</a>
+          <a href="../about.html">关于</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- 主布局 -->
+    <div class="layout-wrapper">
+        <!-- 左侧文章详情 -->
+        <main class="main-content">
+            <article class="article-detail-box">
+                <header class="article-header">
+                    <h1>IP 纯净度怎么看？ChatGPT 报异常与流媒体不解锁的节点排查指南</h1>
+                    <div class="article-meta">
+                        <span>发布日期：2026-09-11</span>
+                        <span>分类：网络原理 / 节点选择</span>
+                        <span>作者：机场Fog 测评团队</span>
+                    </div>
+                </header>
+                
+                <section class="article-body">
+                    <p>许多用户在使用代理节点时经常遇到这种困惑：明明节点延迟很低、速度也能跑满，但一打开 ChatGPT 就提示 <strong>“Unusual activity detected”</strong>，或者登录 Netflix 发现无法播放任何非自制剧集，甚至访问 Claude 直接被拒绝请求。这并不是你的网络断连了，而是因为你所使用的节点 <strong>IP 纯净度太差</strong>，触发了目标网站的高级别风控防火墙。本文将深入讲解 IP 纯净度的底层原理、区分原生 IP 与广播 IP 的方法，并教你如何选出高纯净度的优质节点。</p>
+
+                    <h2 id="section-1">一、什么是 IP 纯净度？为何风控网站对其极度敏感？</h2>
+                    <p>通俗来说，<strong>IP 纯净度指的是某个 IP 地址在各大互联网服务商（如 OpenAI、Google、Netflix、Cloudflare）风控数据库里的历史信誉评价。</strong></p>
+                    <p>当一个 IP 地址被数千名代理用户同时共享，或者曾经被黑客用于爬虫数据抓取、批量注册垃圾账号以及羊毛党刷单时，大数据风控系统就会提高该 IP 的“风险评分（Risk Score）”，甚至直接将其放入黑名单。像 ChatGPT 和 Claude 这类 AI 平台以及 Spotify、Disney+ 等版权流媒体商，对访问源 IP 的审查极为严格，一旦检测到风险评分偏高，就会直接采取验证码拦截或封禁访问策略。</p>
+
+                    <h2 id="section-2">二、原生 IP、广播 IP 与住宅 IP 的核心区别</h2>
+                    <p>判断一个节点 IP 是否适合流媒体解锁与 AI 服务，主要取决于其在国际互联网分配机构（APNIC/ARIN）中的注册信息与实际机房归属：</p>
+                    <ul>
+                        <li><strong>1. 原生 IP（Native IP）：</strong> 指该 IP 的注册国家与机房物理所在国家完全一致。例如机房在东京，IP 的 WHOIS 归属地也是日本。这类 IP 地理位置精准，流媒体解锁概率极高。</li>
+                        <li><strong>2. 广播 IP（Broadcast/Announced IP）：</strong> 指将其他国家注册的 IP 地址（如美国 IP 段）通过 BGP 协议广播到亚洲机房使用。这种 IP 成本较低，但经常因地理位置数据库更新不及时而被流媒体平台识别并封禁。</li>
+                        <li><strong>3. 住宅 IP（Residential IP / 家宽 IP）：</strong> 由真实宽带运营商（如 AT&T、Comcast）分配给普通家庭用户的 IP。在风控系统看来，住宅 IP 的行为模式与普通真人完全一致，是突破风控限制和解锁所有流媒体的“终极武器”。</li>
+                    </ul>
+
+                    <h2 id="section-3">三、如何检测节点 IP 的纯净度与流媒体解锁状态</h2>
+                    <p>当你遇到目标网站打不开或提示异常时，可以通过以下几步进行快速排查：</p>
+                    <ol>
+                        <li><strong>检查基础连通性：</strong> 确保节点正常工作，在浏览器中测试访问 Google 或 YouTube。</li>
+                        <li><strong>使用 IP 数据库检测：</strong> 访问 <code>ipinfo.io</code> 或 <code>scamalytics.com</code>，查看当前节点的 ASN 类型（ISP 还是 Hosting）以及欺诈风险分数（Fraud Score）。风险分高于 30 通常意味着风控风险较大。</li>
+                        <li><strong>流媒体解锁检测：</strong> 在客户端节点列表中选择目标节点后，使用工具站在线检测其对 Netflix、Disney+、OpenAI API 的解锁情况。</li>
+                    </ol>
+
+                    <h2 id="section-4">四、避坑建议与高纯净度节点选型策略</h2>
+                    <p>想要彻底摆脱 ChatGPT 频繁验证和视频不解锁的烦恼，在挑选机场和节点时建议遵循以下原则：</p>
+                    <blockquote>
+                        <p><strong>避坑提示：</strong> 尽量避免使用廉价低质机场的公网中转节点，这类节点往往几千人挤在少数几个 IDC 机房 IP 上，极易爆黑名单。建议优先选择提供<strong>全专线（IPLC/IEPL）</strong>及<strong>独立原生/住宅 IP 输出</strong>的优质机场。</p>
+                    </blockquote>
+                    <ul>
+                        <li>日常办公与刷网页：选择普通 BGP 隧道或专线节点即可，稳定高速。</li>
+                        <li>重度 AI 创作与流媒体观看：在客户端中选择带有“原生”、“解锁”、“家宽”或“Stream”标识的专属节点。</li>
+                    </ul>
+                </section>
+            </article>
+        </main>
+
+        <!-- 右侧侧边栏 -->
+        <aside class="sidebar">
+            <div class="widget">
+                <h3 class="widget-title">相关推荐文章</h3>
+                <ul class="widget-links">
+                    <li><a href="clash-split-guide.html">Clash 规则分流与直连配置</a></li>
+                    <li><a href="unlock-ai-media-guide.html">流媒体与 AI 服务 IP 解锁机制</a></li>
+                    <li><a href="iplc-iepl-explained.html">IPLC 与 IEPL 专线传输技术详解</a></li>
+                    <li><a href="../articles.html">返回文章科普中心</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2026 机场Fog. 保留所有权利。</p>
+      </div>
+    </footer>
+
+    <!-- 脚本 -->
+    <script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>直连、BGP 隧道中转与 IPLC/IEPL 专线拓扑结构全解析｜机场知识库</title>
+  <meta name="description" content="深度解析科学上网机场线路拓扑分类，对比公网直连、BGP 隧道中转与 IPLC/IEPL 国际专线的延迟、过境丢包与稳定性。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="article-page-body">
+      <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <span class="logo-text">机场Fog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">机场推荐</a>
+        <a href="../knowledge.html">知识库</a>
+        <a href="../articles.html">文章科普</a>
+        <a href="../reviews.html">详细评测</a>
+        <a href="../about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+
+  
+  <!-- Header / Navigation Bar -->
+      
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">棣栭〉</a></li>
+        <li class="separator">/</li>
+        <li><a href="../articles.html">鏂囩珷绉戞櫘</a></li>
+        <li class="separator">/</li>
+        <li class="current">线路拓扑与传输质量</li>
+      </ol>
+    </nav>
+
+    <!-- Article Hero Section -->
+    <section class="article-hero">
+      <h1 class="article-title">线路拓扑与传输质量</h1>
+      <div class="article-meta">
+        <span class="meta-item">2026骞?鏈堟洿鏂?/span>
+        <span class="meta-dot">鈥?/span>
+        <span class="meta-item">娣卞害闃呰涓庢寚鍗?/span>
+      </div>
+    </section>
+
+
+    <section class="content-card">
+      <h2 id="section-1">1. 公网直连 (Direct Connection)</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        公网直连指的是用户的客户端直接通过本地宽带连接位于境外的服务器节点。
+      </p>
+      <ul style="margin-left: 1.5rem; color: var(--text-muted); line-height: 1.8; margin-top: 0.5rem;">
+        <li><strong>优点</strong>：架构简单、运营成本低。</li>
+        <li><strong>缺点</strong>：流量必须经过 GFW 防火墙出境，在晚高峰（20:00 - 23:00）骨干网拥堵时，丢包率极高且延迟大幅攀升。</li>
+      </ul>
+    </section>
+
+    <section class="content-card">
+      <h2 id="section-2">2. BGP 隧道中转 (BGP Transit)</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        服务商在境内部署 BGP 多线入口节点（如广州电信、上海移动、北京联通），用户先连接境内中转服务器，再通过加密隧道传输至境外节点出境。
+      </p>
+      <ul style="margin-left: 1.5rem; color: var(--text-muted); line-height: 1.8; margin-top: 0.5rem;">
+        <li><strong>优点</strong>：优化跨网匹配（如移动连移动中转），显著降低延迟与丢包。</li>
+        <li><strong>缺点</strong>：出境段仍使用公网光缆，受大盘过境质量波动影响。</li>
+      </ul>
+    </section>
+
+    <section class="content-card">
+      <h2 id="section-3">3. IPLC / IEPL 企业级物理专线</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        <strong>IPLC (国际专线)</strong> 与 <strong>IEPL (国际以太网专线)</strong> 采用租用电信运营商的点对点物理内网光纤链路，流量在内网传输，完全绕过 GFW 防火墙过境检查。
+      </p>
+      <ul style="margin-left: 1.5rem; color: var(--text-muted); line-height: 1.8; margin-top: 0.5rem;">
+        <li><strong>优点</strong>：零 GFW 干扰、零过境丢包、延迟极致稳定（香港常年在 30ms 以内）。</li>
+        <li><strong>缺点</strong>：带宽成本极高，单价相对较贵。</li>
+      </ul>
+    </section>
+
+    <section class="content-card">
+      <h2 id="section-4">4. 如何根据预算选择合适的线路拓扑</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        对于注重极度稳定和低延迟的玩家（如外服游戏、外贸交易），首选 <strong>IEPL/IPLC 专线</strong>。而对于日常看视频、刷网页的用户，<strong>BGP 隧道中转</strong> 具备极高的性价比。
+      </p>
+    </section>
+
+
+  </main>
+
+  <!-- Footer Section -->
+      
+
+  <script src="../script.js"></script>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 机场Fog 评测博客. 保留所有权利。</p>
+    </div>
+  </footer>
+</body>
+</html>

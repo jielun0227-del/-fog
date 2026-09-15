@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>加密 DNS（DoH/DoT）、GEOIP 路由分流与防 WebRTC 泄露配置指引｜机场知识库</title>
+  <meta name="description" content="全方位讲解代理网络隐私安全防护，包含 DoH/DoT 加密 DNS 配置、GeoIP 路由规则设置与 WebRTC/DNS 泄露防护技巧。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="article-page-body">
+      <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <span class="logo-text">机场Fog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">机场推荐</a>
+        <a href="../knowledge.html">知识库</a>
+        <a href="../articles.html">文章科普</a>
+        <a href="../reviews.html">详细评测</a>
+        <a href="../about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+
+  
+  <!-- Header / Navigation Bar -->
+      
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">棣栭〉</a></li>
+        <li class="separator">/</li>
+        <li><a href="../articles.html">鏂囩珷绉戞櫘</a></li>
+        <li class="separator">/</li>
+        <li class="current">安全防泄露与分流规则</li>
+      </ol>
+    </nav>
+
+    <!-- Article Hero Section -->
+    <section class="article-hero">
+      <h1 class="article-title">安全防泄露与分流规则</h1>
+      <div class="article-meta">
+        <span class="meta-item">2026骞?鏈堟洿鏂?/span>
+        <span class="meta-dot">鈥?/span>
+        <span class="meta-item">娣卞害闃呰涓庢寚鍗?/span>
+      </div>
+    </section>
+
+
+    <section class="content-card">
+      <h2 id="section-1">一、加密 DNS：配置 DoH / DoT 防止 ISP 监听与污染</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        传统的 UDP 53 端口 DNS 解析是明文传输的，容易被本地运营商（ISP）拦截与篡改（DNS 污染）。配置 <strong>DNS over HTTPS (DoH)</strong> 或 <strong>DNS over TLS (DoT)</strong> 可以让所有 DNS 请求在加密通道中传输。
+      </p>
+    </section>
+
+    <section class="content-card">
+      <h2 id="section-2">二、GEOIP 与规则路由分流设置</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        在 Clash 或 Sing-box 中，通过加载最新的 GEOIP 数据库与 Domain 规则集，可实现自动分流：
+      </p>
+      <ul style="margin-left: 1.5rem; color: var(--text-muted); line-height: 1.8; margin-top: 0.5rem;">
+        <li><strong>CN 域名与国内 IP</strong>：走 <code>DIRECT</code> 物理直连，保证淘宝、微信、网易云等国内服务加载顺畅且不浪费代理流量。</li>
+        <li><strong>国外网站与 API</strong>：走 <code>PROXY</code> 代理组传输。</li>
+        <li><strong>ChatGPT / Netflix</strong>：自动匹配专用高解锁分流节点。</li>
+      </ul>
+    </section>
+
+    <section class="content-card">
+      <h2 id="section-3">三、防 WebRTC 泄露技巧</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        WebRTC 是浏览器内置的实时通信协议，有时会绕过代理网卡直接暴露真实的局域网与公网 IP。建议在 Chrome / Edge / Firefox 浏览器中安装 WebRTC Control 插件禁用 WebRTC 泄漏，确保隐私安全。
+      </p>
+    </section>
+
+    <section class="content-card">
+      <h2 id="section-4">四、防泄露全方位实操清单</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        只要正确开启系统的 Fake-IP 机制、启用 DoH 加密以及在浏览器插件中阻断 WebRTC，就能建立绝无真实 IP 泄露的完全匿名安全环境。
+      </p>
+    </section>
+
+
+  </main>
+
+  <!-- Footer Section -->
+      
+
+  <script src="../script.js"></script>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 机场Fog 评测博客. 保留所有权利。</p>
+    </div>
+  </footer>
+</body>
+</html>

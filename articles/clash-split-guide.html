@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Clash 智能分流设置详解：如何实现国内流量直连、国外流量走代理？ - 机场Fog 测评博客</title>
+    <meta name="description" content="开了代理后访问百度、淘宝变慢甚至打不开？本文详细讲解 Clash / Mihomo 智能分流原理、全局/规则/直连三种模式区别、GEOIP与规则集配置，以及分流失效排查指南。">
+    <meta name="keywords" content="Clash分流, 规则模式, 智能分流, 国内直连, 国外代理, Clash Verge, GEOIP, 分流规则配置">
+    <meta name="geo.region" content="CN" />
+    <meta name="geo.placename" content="China" />
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="article-page-body">
+
+    <!-- 顶部导航栏 -->
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="logo">
+          <span class="logo-text">机场Fog</span>
+        </a>
+        <nav class="nav-links">
+          <a href="../index.html">机场推荐</a>
+          <a href="../knowledge.html">知识库</a>
+          <a href="../articles.html">文章科普</a>
+          <a href="../reviews.html">详细评测</a>
+          <a href="../about.html">关于</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- 主布局 -->
+    <div class="layout-wrapper">
+        <!-- 左侧文章详情 -->
+        <main class="main-content">
+            <article class="article-detail-box">
+                <header class="article-header">
+                    <h1>Clash 智能分流设置详解：如何实现国内流量直连、国外流量走代理？</h1>
+                    <div class="article-meta">
+                        <span>发布日期：2026-09-11</span>
+                        <span>分类：软件配置 / 客户端教程</span>
+                        <span>作者：机场Fog 测评团队</span>
+                    </div>
+                </header>
+                
+                <section class="article-body">
+                    <p>在使用 Clash Verge、Shadowrocket、Sing-box 等代理客户端时，不少新手用户会遇到这样的烦恼：明明购买了高带宽机场，但只要一开启代理，访问百度、淘宝、微信网页版反而变得非常缓慢，甚至提示“地区版权限制”。这往往是因为客户端误开启了全局代理模式，导致所有国内流量都绕道海外节点。本文将深入剖析 Clash 智能分流的工作机制，教你如何轻松配置“国内直连、国外代理”的高效网络环境。</p>
+
+                    <h2 id="section-1">一、为什么开启代理后国内网站会变慢？</h2>
+                    <p>当你的设备发起网络请求时，数据包需要经过 DNS 解析并建立 TCP/UDP 连接。如果所有流量都强制经过海外代理服务器中转：</p>
+                    <ul>
+                        <li><strong>额外传输延迟：</strong> 访问国内服务器的数据包需要先跨海发送到香港、日本或美国节点，再由海外节点折返回国内，延迟从十几毫秒激增至几百毫秒。</li>
+                        <li><strong>CDN 调度失效：</strong> 国内各大网站（如 Bilibili、爱奇艺）依赖 CDN 节点进行就近加速。海外 IP 会被分配到海外 CDN，导致加载极慢甚至无法播放。</li>
+                        <li><strong>浪费套餐流量：</strong> 国内的高清视频和文件下载同样会扣除你购买的机场套餐额度。</li>
+                    </ul>
+
+                    <h2 id="section-2">二、全局模式、规则模式与直连模式的区别</h2>
+                    <p>为了解决上述问题，现代代理客户端均内置了三种核心运行模式：</p>
+                    <ol>
+                        <li><strong>规则模式（Rule / 推荐首选）：</strong> 客户端根据内置的规则集毫秒级匹配域名和 IP。国内域名与 IP 走 <strong>DIRECT（直连）</strong>，完全不经过代理；国外域名走 <strong>PROXY（代理）</strong>。既保证访问境外网站畅通，又维持国内访问的极速体验。</li>
+                        <li><strong>全局模式（Global）：</strong> 强行关掉所有分流规则，所有流量无条件走你点选的节点。仅适合某些未被规则收录的小众国外网站临时救急。</li>
+                        <li><strong>直连模式（Direct）：</strong> 相当于临时停用代理功能，所有流量均走本地宽带物理出网。</li>
+                    </ol>
+
+                    <h2 id="section-3">三、最小智能分流配置逻辑（GEOIP 与 规则匹配）</h2>
+                    <p>在 Clash 或 Mihomo 内核中，一套标准且高效的分流规则通常由以下三层自上而下匹配构成：</p>
+                    <blockquote>
+                        <p><strong>Clash 规则匹配原则：</strong> 规则匹配遵循“自上而下、先命中先执行”的顺序。因此，具体的域名规则（如 OpenAI）必须放在前面，宽泛的规则（如 GEOIP,CN）放在中间，最后以 <code>MATCH,DIRECT</code> 或 <code>MATCH,PROXY</code> 兜底。</p>
+                    </blockquote>
+                    <pre style="background: var(--bg-card-hover); padding: 1rem; border-radius: 8px; font-size: 0.9rem; overflow-x: auto; color: var(--text-main);">
+rules:
+  # 1. 常用境外服务指定节点策略
+  - DOMAIN-SUFFIX,openai.com,美国节点
+  - DOMAIN-SUFFIX,youtube.com,节点选择
+  
+  # 2. 国内大陆 IP 及域名强制直连 (使用地理位置数据库)
+  - GEOIP,CN,DIRECT
+  - GEOSITE,CN,DIRECT
+  
+  # 3. 兜底规则（未匹配项默认处理方式）
+  - MATCH,节点选择
+                    </pre>
+
+                    <h2 id="section-4">四、分流失效或异常时的排查技巧</h2>
+                    <p>如果配置为规则模式后依然发现国内流量走代理，可以按以下三步快速诊断：</p>
+                    <ul>
+                        <li><strong>1. 检查连接日志（Connections）：</strong> 打开 Clash Verge 的“连接”页面，观察访问国内网站（如 baidu.com）时命中的规则是否显示为 <code>DIRECT</code>。</li>
+                        <li><strong>2. 更新订阅与 GeoIP 数据库：</strong> 在软件设置中刷新订阅，更新内置的 GeoIP.dat 与 GeoSite.dat 数据库，避免由于数据库过旧导致新国内 IP 被误判。</li>
+                        <li><strong>3. 排查 DNS 污染与泄露：</strong> 确认客户端已开启 DoH（DNS over HTTPS）解析，防止本地运营商 DNS 劫持导致分流规则判断错误。</li>
+                    </ul>
+                </section>
+            </article>
+        </main>
+
+        <!-- 右侧侧边栏 -->
+        <aside class="sidebar">
+            <div class="widget">
+                <h3 class="widget-title">相关推荐文章</h3>
+                <ul class="widget-links">
+                    <li><a href="global-vs-rule-mode.html">全局模式与规则模式区别深度解析</a></li>
+                    <li><a href="clash-verge-guide.html">Clash Verge 全平台安装配置教程</a></li>
+                    <li><a href="zero-leak-privacy-guide.html">零泄露隐私防护与 DNS 配置</a></li>
+                    <li><a href="../articles.html">返回文章科普中心</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2026 机场Fog. 保留所有权利。</p>
+      </div>
+    </footer>
+
+    <!-- 脚本 -->
+    <script src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>机场协议与技术科普｜Shadowsocks、Trojan、VLESS、Hysteria2与AnyTLS详解 - 机场测评博客</title>
+  <meta name="description" content="2026 最新机场代理协议与技术概念科普：讲清 Shadowsocks、Trojan、VLESS+Reality、Hysteria2、AnyTLS 各自的技术原理与抗封锁能力差别，分析节点导不进 Clash 的真实原因。">
+  <meta name="keywords" content="机场协议, 代理协议对比, Shadowsocks, Trojan协议, VLESS Reality, Hysteria2, AnyTLS协议, TUIC协议, 节点导入失败">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Two-column Layout with Sticky Sidebar Table of Contents */
+    .protocol-layout-container {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 992px) {
+      .protocol-layout-container {
+        grid-template-columns: 1fr;
+      }
+      .protocol-sidebar {
+        order: -1;
+      }
+    }
+
+    /* Right Sticky Sidebar Directory Style */
+    .protocol-sidebar {
+      position: sticky;
+      top: 90px;
+    }
+
+    .protocol-toc-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .protocol-toc-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      padding-bottom: 0.75rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .protocol-toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      max-height: calc(100vh - 160px);
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .protocol-toc-item a {
+      display: block;
+      padding: 0.45rem 0.75rem;
+      border-radius: var(--radius-sm);
+      color: var(--text-sub);
+      text-decoration: none;
+      font-size: 0.88rem;
+      line-height: 1.4;
+      transition: var(--transition-fast);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .protocol-toc-item a:hover {
+      background: rgba(59, 130, 246, 0.12);
+      color: var(--accent-primary);
+      padding-left: 0.95rem;
+    }
+
+    /* Key Technical Insights Cards */
+    .insight-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .insight-card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .insight-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+    }
+
+    .insight-num {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.9rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
+    }
+
+    .insight-body h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+    }
+
+    .insight-body p {
+      font-size: 0.88rem;
+      color: var(--text-sub);
+      line-height: 1.6;
+    }
+
+    /* Protocol Detail Articles List */
+    .protocol-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      scroll-margin-top: 5rem;
+      transition: var(--transition-fast);
+    }
+
+    .protocol-block:hover {
+      border-color: var(--border-color-light);
+    }
+
+    .protocol-header-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .protocol-header-title a {
+      color: var(--text-main);
+      text-decoration: none;
+      transition: var(--transition-fast);
+    }
+
+    .protocol-header-title a:hover {
+      color: var(--accent-primary);
+    }
+
+    .protocol-content-text {
+      color: var(--text-sub);
+      line-height: 1.75;
+      font-size: 0.95rem;
+    }
+
+    /* FAQ Custom Accordion for Protocols */
+    .faq-item-custom {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.4rem;
+      margin-bottom: 1rem;
+      transition: var(--transition-fast);
+    }
+
+    .faq-item-custom:hover {
+      border-color: var(--border-color-light);
+    }
+
+    .faq-item-custom summary {
+      font-weight: 700;
+      font-size: 1.05rem;
+      cursor: pointer;
+      color: var(--text-main);
+      outline: none;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-item-custom summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item-custom summary::after {
+      content: "+";
+      font-size: 1.3rem;
+      color: var(--accent-primary);
+      font-weight: 400;
+      transition: transform 0.2s ease;
+    }
+
+    .faq-item-custom[open] summary::after {
+      content: "−";
+      transform: rotate(180deg);
+    }
+
+    .faq-item-custom .faq-answer {
+      margin-top: 0.85rem;
+      color: var(--text-sub);
+      line-height: 1.75;
+      font-size: 0.95rem;
+      border-top: 1px dashed var(--border-color);
+      padding-top: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="./images/site_logo.png" alt="机场fog Logo" class="site-logo-img">
+        <span class="logo-text">机场Fog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">机场推荐</a>
+        <a href="knowledge.html">知识库</a>
+        <a href="articles.html">文章科普</a>
+        <a href="reviews.html">详细评测</a>
+        <a href="protocols.html" class="active">机场协议</a>
+        <a href="faq.html">机场FAQ</a>
+        <a href="about.html">关于</a>
+        <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="切换主题模式" title="切换深色/浅色模式">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">首页</a></li>
+        <li class="separator">/</li>
+        <li class="current">机场协议</li>
+      </ol>
+    </nav>
+
+    <!-- Article Header Hero Section -->
+    <section class="article-hero">
+      <h1 class="article-title">机场协议与技术科普全景指南</h1>
+      <div class="article-meta">
+        <span class="meta-item">2026年9月深度润色更新</span>
+        <span class="meta-dot">•</span>
+        <span class="meta-item">基于协议官方文档与技术实测</span>
+      </div>
+      <div class="hero-intro-box">
+        <p>
+          讲清 Shadowsocks、Trojan、VLESS+Reality、Hysteria2、AnyTLS 各自的技术原理与抗封锁能力差别，深度分析机场为何集中更换协议，以及节点导不进 Clash 到底是协议兼容问题还是客户端内核过老问题。
+        </p>
+      </div>
+    </section>
+
+    <!-- Key Technical Insights Cards (4 Golden Rules) -->
+    <div class="insight-card-grid">
+      <div class="insight-card">
+        <span class="insight-num">01</span>
+        <div class="insight-body">
+          <h4>先分清直连还是中转</h4>
+          <p>协议的抗封锁能力只在流量“直接过墙”时才是决定性的。走国内中转或 IEPL 专线的节点，流量在入口就被隧道封装了，用什么协议对稳定性影响极小——这也是为何许多机场的经典 SS 节点依然稳如磐石。</p>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <span class="insight-num">02</span>
+        <div class="insight-body">
+          <h4>连不上，多半怪客户端不怪协议</h4>
+          <p>“订阅更新失败”或“节点导入后全红”，最常见的原因是客户端内核过老，不支持机场新引入的新协议（如 AnyTLS 或 VLESS Reality）。2026 年升级客户端内核通常比更换机场更能解决断连故障。</p>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <span class="insight-num">03</span>
+        <div class="insight-body">
+          <h4>别仅为了协议去频繁换机场</h4>
+          <p>在同等 TLS 链路下，各协议之间的传输速度差距很小，真正决定网络体验的是机场的线路质量与过境带宽。协议主要在敏感时期拉开“能否连通”的差距，线路才是速度与体验的基石。</p>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <span class="insight-num">04</span>
+        <div class="insight-body">
+          <h4>关注服务商的技术选型公开度</h4>
+          <p>愿意公开透明地说明“为何采用某协议、摒弃某协议”的机场，通常技术研发力与维护响应速度更靠谱；反之，官网宣传与后台配置脱节的服务商则需保持谨慎。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Two-Column Layout (Main Protocols Detail Content + Right Sticky Sidebar Directory) -->
+    <div class="protocol-layout-container">
+      
+      <!-- Main Content Area -->
+      <div class="protocol-main-content">
+
+        <!-- Article 1: Reality -->
+        <section id="protocol-reality" class="protocol-block">
+          <h3 class="protocol-header-title">
+            <span>⚡ REALITY 协议：借用真网站证书的外观伪装</span>
+          </h3>
+          <div class="protocol-content-text">
+            <p><strong>技术原理：</strong>REALITY 并非独立的全新底层传输协议，而是 Xray 团队对 TLS 握手特征的深度修改。它通过直接借用真实合规目标网站（如 Apple、Microsoft）的 TLS 外观与证书特征完成伪装，无需自建证书或域名即可实现强悍的抗主动探测能力。</p>
+            <p style="margin-top:0.5rem;"><strong>机场应用现状：</strong>虽然在个人自建节点圈备受追捧，但在商业机场中普及率极低（仅个位数机场采用）。原因在于大流量商业节点频繁借用同一真实目标域名时容易产生异常流量特征，维护成本较高。</p>
+          </div>
+        </section>
+
+        <!-- Article 2: VLESS -->
+        <section id="protocol-vless" class="protocol-block">
+          <h3 class="protocol-header-title">
+            <span>🔒 VLESS 协议：轻量无状态协议的隐蔽性解析</span>
+          </h3>
+          <div class="protocol-content-text">
+            <p><strong>技术原理：</strong>VLESS 被官方定义为“无状态的轻量传输协议”，其核心优势在于去掉了传统 VMess 复杂的自带加密层，转而依赖外层的 TLS 或 REALITY 提供加密保护，大大降低了服务器 CPU 开销并提升了高并发性能。</p>
+            <p style="margin-top:0.5rem;"><strong>安全性说明：</strong>VLESS 本身不加密，安全性完全取决于外层包裹的是普通 TLS 还是 REALITY 伪装层。由于没有历史包袱，它已成为现代高性能节点的主力协议之一。</p>
+          </div>
+        </section>
+
+        <!-- Article 3: VLESS & Clash -->
+        <section id="protocol-vless-clash" class="protocol-block">
+          <h3 class="protocol-header-title">
+            <span>⚙️ VLESS 节点导不进 Clash？客户端内核替换指引</span>
+          </h3>
+          <div class="protocol-content-text">
+            <p><strong>故障根源：</strong>VLESS 节点导入失败或无法连接，90% 以上是因为使用了已停更删库的老旧客户端（如 2023 年前版本的 Clash for Windows），其旧版开源内核完全无法识别 VLESS 语法规范。</p>
+            <p style="margin-top:0.5rem;"><strong>解决办法：</strong>建议各平台全面升级至采用 Mihomo (Clash Meta) 内核的现代化客户端（如 Clash Verge Rev、Stash、Sing-box），即可无缝导入并开启系统代理。</p>
+          </div>
+        </section>
+
+        <!-- Article 4: Protocol Comparison -->
+        <section id="protocol-comparison" class="protocol-block">
+          <h3 class="protocol-header-title">
+            <span>📊 常用代理协议逐对比较：谁才是抗封锁王者？</span>
+          </h3>
+          <div class="protocol-content-text">
+            <p><strong>分层比较逻辑：</strong>首先需要厘清：VLESS、VMess、Trojan、Shadowsocks 属于“数据搬运协议”，而 REALITY、AnyTLS 属于“外观伪装技术”。</p>
+            <ul style="margin-left:1.25rem; margin-top:0.4rem;">
+              <td>• <strong>Shadowsocks vs Trojan：</strong>SS 属于经典对称加密，直连容易受特征识别；Trojan 则伪装成真实 HTTPS 网站，防封锁性更优。</td>
+              <td>• <strong>VMess vs VLESS：</strong>VMess 自带加密开销大；VLESS 轻量高效，配合 TLS/Reality 具备更出色的高并发与防封锁上限。</td>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Article 5: Shadowsocks & VMess -->
+        <section id="protocol-shadowsocks" class="protocol-block">
+          <h3 class="protocol-header-title">
+            <span>🛡️ Shadowsocks 与 VMess：2026 年还能稳定使用吗？</span>
+          </h3>
+          <div class="protocol-content-text">
+            <p><strong>现状分析：</strong>在直连公网过墙场景下，裸 Shadowsocks 和早期 VMess 因加密流量特征明显，极其容易被深度包检测（DPI）识别及阻断。</p>
+            <p style="margin-top:0.5rem;"><strong>存量价值：</strong>但在 BGP 中转与 IEPL 内网专线线路中，因为过墙流量已被过境隧道二次封装，Shadowsocks 凭其极低的加解密 CPU 消耗和高传输效率，依然被大量高端机场选为主力中转传输协议。</p>
+          </div>
+        </section>
+
+        <!-- Article 6: Hysteria2 -->
+        <section id="protocol-hysteria2" class="protocol-block">
+          <h3 class="protocol-header-title">
+            <span>🚀 Hysteria2 (歇斯底里) 协议：UDP 拥塞控制与爆发加速</span>
+          </h3>
+          <div class="protocol-content-text">
+            <p><strong>技术原理：</strong>基于 QUIC (UDP) 协议开发，采用激进的 Brutal 拥塞控制算法。在面对高丢包的移动网络或弱网环境时，能够主动“抢占带宽”，实现断崖式丢包环境下的速度逆袭。</p>
+            <p style="margin-top:0.5rem;"><strong>使用注意事项：</strong>UDP 流量在部分地区运营商（如部分省份电信或移动）可能会受到极严重的 QoS 限制或限速。配合端口跳跃（Port Hopping）功能可有效缓解该问题。</p>
+          </div>
+        </section>
+
+        <!-- Article 7: Trojan -->
+        <section id="protocol-trojan" class="protocol-block">
+          <h3 class="protocol-header-title">
+            <span>🏰 Trojan 协议：伪装成 HTTPS 网站的稳健方案</span>
+          </h3>
+          <div class="protocol-content-text">
+            <p><strong>技术原理：</strong>Trojan 并不伪装成不存在的协议，而是直接将节点流量伪装成标准 TLS/HTTPS 网站流量。如果未收到正确的认证密码，服务器会自动返回一个标准的网站 HTML 页面以抵御主动探测。</p>
+            <p style="margin-top:0.5rem;"><strong>兼容性优势：</strong>Trojan 协议成熟度极高，几乎受到全球所有代理客户端（Shadowrocket、Clash、v2rayN、Sing-box）的 native 原生支持，是目前各大中高端机场最普遍采用的兜底协议。</p>
+          </div>
+        </section>
+
+        <!-- Article 8: AnyTLS -->
+        <section id="protocol-anytls" class="protocol-block">
+          <h3 class="protocol-header-title">
+            <span>🌐 AnyTLS 协议：针对指纹检测的下一代抗审查利器</span>
+          </h3>
+          <div class="protocol-content-text">
+            <p><strong>技术原理：</strong>专门用于缓解和对抗针对“嵌套 TLS 握手指纹”检测的最新开源协议。通过动态修改 TLS 握手扩展参数与字节流模式，避免防护系统识别代理特征。</p>
+            <p style="margin-top:0.5rem;"><strong>普及趋势：</strong>2026 年越来越多机场集中迁入 AnyTLS 协议。需要特别提醒的是，老版本 v2rayNG 或旧版 Clash 无法导入此类节点，必须将客户端内核升级至新版 Mihomo/Sing-box。</p>
+          </div>
+        </section>
+
+        <!-- Protocol FAQ Section -->
+        <section id="protocol-faq" style="margin-top: 2.5rem;">
+          <h2 style="font-size: 1.3rem; font-weight: 700; color: var(--text-main); margin-bottom: 1.25rem; border-left: 4px solid var(--accent-primary); padding-left: 0.75rem;">
+            五、机场协议常见疑问解答 (FAQ)
+          </h2>
+
+          <details class="faq-item-custom" open>
+            <summary>Q：机场协议是什么？和 VPN 协议是一回事吗？</summary>
+            <div class="faq-answer">
+              <p>机场协议指的是节点用来传输和伪装流量的技术规范（如 Shadowsocks、Trojan、VLESS、Hysteria2、AnyTLS）。它与传统 VPN 协议（OpenVPN、WireGuard）不同：VPN 重在加密隧道建立，而机场代理协议的核心目标是“抗封锁与流量伪装”——将代理流量伪装成正常 HTTPS、QUIC 或无特征数据包，避免被 DPI 系统识别拦截。</p>
+            </div>
+          </details>
+
+          <details class="faq-item-custom" open>
+            <summary>Q：机场协议怎么选？哪个最抗封锁？</summary>
+            <div class="faq-answer">
+              <p>购买机场时通常不需要手动选协议，机场订阅会自动按最适协议导入。若论抗封锁能力：VLESS+Reality 与 AnyTLS 领先；Hysteria2 在高丢包与移动弱网环境优势显著；Trojan 是兼容性最出色的兜底方案；而裸 Shadowsocks 则更适合在内网专线或中转线路中发挥高效率优势。</p>
+            </div>
+          </details>
+
+          <details class="faq-item-custom">
+            <summary>Q：节点导不进 Clash、订阅更新失败，是协议的问题吗？</summary>
+            <div class="faq-answer">
+              <p>大概率是客户端内核版本过老，而非机场故障。随着机场集中升级至 AnyTLS 或 VLESS 等新协议，老旧客户端（如停更的 Clash for Windows）因缺少新内核解码器，表现为“订阅下载失败”或“导入后节点全红”。请优先更换并升级至最新版 Clash Verge Rev、Stash 或 Sing-box 客户端即可解决。</p>
+            </div>
+          </details>
+
+          <details class="faq-item-custom">
+            <summary>Q：协议会直接影响网络速度吗？</summary>
+            <div class="faq-answer">
+              <p>影响比想象中要小。在相同的线路与带宽条件下，主流协议间的传输速度差异很有限。真正拉开体验差距的是机场的线路类型（直连/BGP中转/IEPL专线）与过境带宽。协议主要在敏感时期决定“能否稳定连通”，不频繁断连即保证了最高速度体验。</p>
+            </div>
+          </details>
+        </section>
+
+      </div>
+
+      <!-- Right Sticky Sidebar Directory Navigation -->
+      <aside class="protocol-sidebar">
+        <div class="protocol-toc-card">
+          <div class="protocol-toc-title">按主题跳转</div>
+          <ul class="protocol-toc-list">
+            <li class="protocol-toc-item"><a href="#protocol-reality">REALITY 协议原理</a></li>
+            <li class="protocol-toc-item"><a href="#protocol-vless">VLESS 轻量无状态协议</a></li>
+            <li class="protocol-toc-item"><a href="#protocol-vless-clash">VLESS 导入 Clash 修复</a></li>
+            <li class="protocol-toc-item"><a href="#protocol-comparison">常用协议逐对比较</a></li>
+            <li class="protocol-toc-item"><a href="#protocol-shadowsocks">Shadowsocks与VMess现状</a></li>
+            <li class="protocol-toc-item"><a href="#protocol-hysteria2">Hysteria2 UDP爆发加速</a></li>
+            <li class="protocol-toc-item"><a href="#protocol-trojan">Trojan HTTPS 伪装</a></li>
+            <li class="protocol-toc-item"><a href="#protocol-anytls">AnyTLS 抗指纹协议</a></li>
+            <li class="protocol-toc-item"><a href="#protocol-faq">协议常见疑问 FAQ</a></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col brand-col">
+        <h3>机场推荐与测评</h3>
+        <p>2026 最新机场推荐与测评指南，致力于提供客观、透明、可验证的科学上网与 VPN 线路测试。</p>
+        <p class="copyright">© 2026 机场推荐与测评. All Rights Reserved.</p>
+      </div>
+      <div class="footer-col">
+        <h4>快速导航</h4>
+        <ul>
+          <li><a href="index.html">机场推荐</a></li>
+          <li><a href="protocols.html">机场协议</a></li>
+          <li><a href="faq.html">机场 FAQ</a></li>
+          <li><a href="knowledge.html">知识库中心</a></li>
+          <li><a href="articles.html">文章科普</a></li>
+          <li><a href="reviews.html">详细评测</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Toast Notification -->
+  <div id="toastNotification" class="toast-notification">
+    <span id="toastMessage">已成功跳转！</span>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

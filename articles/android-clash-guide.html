@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Android 手机 Clash Meta 安装与订阅导入指南｜知识库 - 机场Fog测评博客</title>
+  <meta name="description" content="2026 安卓手机翻墙教程：Clash Meta for Android (CMFA) APK 安装、订阅 URL 导入、分流规则设置及连接故障排查。">
+  <meta name="keywords" content="Clash Meta for Android, 安卓翻墙, CMFA, Clash安卓教程, 订阅导入, VPN教程">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="article-page-body">
+      <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <span class="logo-text">机场Fog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">机场推荐</a>
+        <a href="../knowledge.html">知识库</a>
+        <a href="../articles.html">文章科普</a>
+        <a href="../reviews.html">详细评测</a>
+        <a href="../about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+
+  
+  <!-- Header / Navigation Bar -->
+      
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">首页</a></li>
+        <li class="separator">/</li>
+        <li><a href="../knowledge.html">知识库</a></li>
+        <li class="separator">/</li>
+        <li class="current">Android Clash Meta 安装与订阅导入教程</li>
+      </ol>
+    </nav>
+
+    <!-- Article Hero Section -->
+    <section class="article-hero">
+      <h1 class="article-title">Android 手机 Clash Meta 下载、安装与订阅导入教程</h1>
+      <div class="article-meta">
+        <span class="meta-item">2026年9月更新</span>
+        <span class="meta-dot">•</span>
+        <span class="meta-item">Android 全机型适用 • 核心字数约900字</span>
+      </div>
+    </section>
+
+    <!-- Article Main Layout -->
+    <section class="article-layout">
+      <article class="article-body">
+        
+        <div id="section-1" class="article-section">
+          <h2>一、Android 端代理客户端选型现状</h2>
+          <p>
+            在 Android 移动端生态中，传统的 Clash for Android 已经停止维护更新。为了能够全面支持新一代加密协议（如 VLESS Reality、Hysteria2、TUIC 等），目前官方推荐使用由开源社区活跃维护的 <strong>Clash Meta for Android (简称 CMFA)</strong>。它保留了清晰直观的控制面板，同时升级了高性能的 Mihomo 内核，是安卓手机科学上网的最佳选择。
+          </p>
+        </div>
+
+        <div id="section-2" class="article-section">
+          <h2>二、APK 下载与权限授权事项</h2>
+          <p>
+            用户可以通过官方 GitHub Releases 页面下载安装最新的 APK 文件。在安装过程中请注意以下事项：
+          </p>
+          <ul>
+            <li><strong>文件版本选择</strong>：大部分现代安卓手机（小米、华为、OPPO、vivo、三星等）均采用 64 位 ARM 处理器，请优先下载包含 <code>arm64-v8a</code> 标识的 APK 文件。</li>
+            <li><strong>安装未知应用权限</strong>：下载完成后点击安装包，若系统弹框提示“出于安全考虑，禁止安装未知来源应用”，请前往系统设置临时开启当前浏览器或文件管理器的“允许安装未知应用”权限。</li>
+            <li><strong>VPN 服务授权</strong>：首次启动软件并建立连接时，Android 系统会弹出“网络连接请求”提示框，询问是否允许创建 VPN 通道，请务必点击“确定”或“允许”。</li>
+          </ul>
+        </div>
+
+        <div id="section-3" class="article-section">
+          <h2>三、订阅 URL 导入与启用步骤</h2>
+          <p>
+            准备好您的机场订阅链接后，只需简单几步即可开启网络加速：
+          </p>
+          <ol>
+            <li>打开 Clash Meta 应用，点击主界面的 <code>配置 (Profiles)</code> 入口。</li>
+            <li>点击右上角的 <code>+</code> 加号按钮，在弹出的导入选项中选择 <code>URL</code>（从 URL 导入）。</li>
+            <li>在“名称”一栏随意填写标识（如机场名称），在“URL”一栏粘贴您获取到的 Clash 订阅链接，随后点击右上角保存。</li>
+            <li>系统会自动下载并解析配置文件，成功后返回配置列表，点击勾选刚才保存的配置。</li>
+            <li>返回主界面，点击中央的开关按钮启动 VPN 代理。在“代理”列表中选择合适的节点即可实现顺畅访问。</li>
+          </ol>
+        </div>
+
+        <div id="section-4" class="article-section">
+          <h2>四、常见问题排查与优化配置</h2>
+          <p>
+            如果在连接后发现无法正常访问网页或流量异常，请参考以下自检项：
+          </p>
+          <ul>
+            <li><strong>应用保活与后台断连</strong>：针对国产手机系统（如 HyperOS、OriginOS、ColorOS），建议在后台任务卡片中将 Clash 锁定，并在系统电池管理中将其设为“无限制/允许后台运行”。</li>
+            <li><strong>应用分流设置 (应用绕过)</strong>：若希望微信、淘宝等国内 App 不经过代理，可在设置中开启“应用分流”功能，将本地应用排除在代理之外，既省流量又提速。</li>
+            <li><strong>无法导入订阅</strong>：确认订阅链接没有多余空格，且网络能够连通订阅服务器域名。若域名受到污染，可先通过其他网络环境更新配置后再切回。</li>
+          </ul>
+        </div>
+
+      </article>
+
+      <!-- Sidebar Area -->
+      <aside class="article-sidebar">
+        <div class="sidebar-widget">
+          <h3 class="widget-title">此页内容</h3>
+          <ul class="sidebar-toc">
+            <li><a href="#section-1">一、Android 端代理客户端选型现状</a></li>
+            <li><a href="#section-2">二、APK 下载与权限授权事项</a></li>
+            <li><a href="#section-3">三、订阅 URL 导入与启用步骤</a></li>
+            <li><a href="#section-4">四、常见问题排查与优化配置</a></li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+      
+
+  <script src="../script.js"></script>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 机场Fog 评测博客. 保留所有权利。</p>
+    </div>
+  </footer>
+</body>
+</html>

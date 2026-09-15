@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>流媒体与 AI 服务 IP 解锁机制｜文章科普</title>
+  <meta name="description" content="讲解 OpenAI, Claude 及 Netflix 风控识别机制与住宅 IP 路由分流实践。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="article-page-body">
+      <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <span class="logo-text">机场Fog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">机场推荐</a>
+        <a href="../knowledge.html">知识库</a>
+        <a href="../articles.html">文章科普</a>
+        <a href="../reviews.html">详细评测</a>
+        <a href="../about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+
+  
+  <!-- Header / Navigation Bar -->
+      
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">首页</a></li>
+        <li class="separator">/</li>
+        <li><a href="../articles.html">文章科普</a></li>
+        <li class="separator">/</li>
+        <li class="current">流媒体与 AI 解锁机制</li>
+      </ol>
+    </nav>
+
+    <!-- Article Hero Section -->
+    <section class="article-hero">
+      <h1 class="article-title">流媒体与 AI 服务 IP 解锁机制</h1>
+      <div class="article-meta">
+        <span class="meta-item">2026年9月更新</span>
+        <span class="meta-dot">•</span>
+        <span class="meta-item">深度技术原理</span>
+      </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <div class="table-of-contents">
+      <div class="toc-title">文章目录</div>
+      <ul class="toc-list">
+        <li><a href="#section-1">一、流媒体与 AI 服务商如何识别数据中心 IP</a></li>
+        <li><a href="#section-2">二、原生 IP 与住宅 IP 的区别</a></li>
+        <li><a href="#section-3">三、SmartDNS 与 DNS 住宅 IP 分流技术</a></li>
+        <li><a href="#section-4">四、Clash / Sing-box 分流规则配置</a></li>
+      </ul>
+    </div>
+
+    <section class="content-card">
+      <h2 id="section-1">一、流媒体与 AI 服务商如何识别数据中心 IP</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        OpenAI、Netflix、Disney+ 等服务商使用 MaxMind、IP2Location 等第三方数据库查验访问者 IP 的 ASN 类型，一旦识别为 DataCenter (IDC)，即触发 403 地区阻断。
+      </p>
+    </section>
+
+    <section class="content-card">
+      <h2 id="section-2">二、原生 IP 与住宅 IP 的区别</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        原生 IP（Native IP）指注册地与机房所在地一致的 IP；而住宅 IP（ISP/Residential IP）则归属于当地宽带运营商，具备最高的信任权重。
+      </p>
+    </section>
+
+    <section class="content-card">
+      <h2 id="section-3">三、SmartDNS 与 DNS 住宅 IP 分流技术</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        优质机场通过在边缘节点配置 DNS 分流规则，将特定流媒体与 AI 请求转发至双 ISP 住宅出口，实现无感全解锁。
+      </p>
+    </section>
+
+    <section class="content-card">
+      <h2 id="section-4">四、Clash / Sing-box 分流规则配置</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        在客户端配置文件中设置 <code>GEOSITE,openai</code> 与 <code>GEOSITE,netflix</code> 路由策略，将其绑定到解锁节点即可。
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer Section -->
+      
+
+  <script src="../script.js"></script>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 机场Fog 评测博客. 保留所有权利。</p>
+    </div>
+  </footer>
+</body>
+</html>

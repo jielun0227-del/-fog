@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>机场 FAQ 常见问题大全｜机场选购、订阅导入、专线对比与防坑避雷 - 机场测评博客</title>
+  <meta name="description" content="2026 最全机场 FAQ 常见问题解答，按主题整理机场概念、新手选购、订阅链接导入、客户端兼容、IEPL专线与中转区别、流媒体与AI解锁及跑路防坑策略。">
+  <meta name="keywords" content="机场FAQ, 翻墙机场常见问题, Clash订阅导入, IEPL专线区别, 机场跑路避坑, ChatGPT机场解锁, 机场节点选型">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Two-column Layout with Sticky Sidebar Table of Contents */
+    .faq-layout-container {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 992px) {
+      .faq-layout-container {
+        grid-template-columns: 1fr;
+      }
+      .faq-sidebar {
+        order: -1;
+      }
+    }
+
+    /* Right Sticky Sidebar Table of Contents Style */
+    .faq-sidebar {
+      position: sticky;
+      top: 90px;
+    }
+
+    .faq-toc-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .faq-toc-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      padding-bottom: 0.75rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .faq-toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      max-height: calc(100vh - 160px);
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .faq-toc-item a {
+      display: block;
+      padding: 0.45rem 0.75rem;
+      border-radius: var(--radius-sm);
+      color: var(--text-sub);
+      text-decoration: none;
+      font-size: 0.88rem;
+      line-height: 1.4;
+      transition: var(--transition-fast);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .faq-toc-item a:hover {
+      background: rgba(59, 130, 246, 0.12);
+      color: var(--accent-primary);
+      padding-left: 0.95rem;
+    }
+
+    .faq-toc-item.active a {
+      background: var(--accent-primary);
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Category Blocks & Custom Accordions */
+    .faq-group-block {
+      margin-bottom: 2.5rem;
+      scroll-margin-top: 5rem;
+    }
+
+    .faq-group-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-left: 4px solid var(--accent-primary);
+      padding-left: 0.75rem;
+    }
+
+    .faq-item-custom {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.4rem;
+      margin-bottom: 1rem;
+      transition: var(--transition-fast);
+    }
+
+    .faq-item-custom:hover {
+      border-color: var(--border-color-light);
+    }
+
+    .faq-item-custom summary {
+      font-weight: 700;
+      font-size: 1.05rem;
+      cursor: pointer;
+      color: var(--text-main);
+      outline: none;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-item-custom summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item-custom summary::after {
+      content: "+";
+      font-size: 1.3rem;
+      color: var(--accent-primary);
+      font-weight: 400;
+      transition: transform 0.2s ease;
+    }
+
+    .faq-item-custom[open] summary::after {
+      content: "−";
+      transform: rotate(180deg);
+    }
+
+    .faq-item-custom .faq-answer {
+      margin-top: 0.85rem;
+      color: var(--text-sub);
+      line-height: 1.75;
+      font-size: 0.95rem;
+      border-top: 1px dashed var(--border-color);
+      padding-top: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="./images/site_logo.png" alt="机场fog Logo" class="site-logo-img">
+        <span class="logo-text">机场Fog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">机场推荐</a>
+        <a href="knowledge.html">知识库</a>
+        <a href="articles.html">文章科普</a>
+        <a href="reviews.html">详细评测</a>
+        <a href="protocols.html">机场协议</a>
+        <a href="faq.html" class="active">机场FAQ</a>
+        <a href="about.html">关于</a>
+        <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="切换主题模式" title="切换深色/浅色模式">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">首页</a></li>
+        <li class="separator">/</li>
+        <li class="current">机场FAQ</li>
+      </ol>
+    </nav>
+
+    <!-- Article Header Hero Section -->
+    <section class="article-hero">
+      <h1 class="article-title">机场 FAQ 常见问题完全指南</h1>
+      <div class="article-meta">
+        <span class="meta-item">2026年9月全面润色更新</span>
+        <span class="meta-dot">•</span>
+        <span class="meta-item">涵盖选购、导入、线路、解锁与防跑路</span>
+      </div>
+      <div class="hero-intro-box">
+        <p>
+          从“机场基础概念”到订阅导入、线路类型拆解、流媒体/AI工具解锁，再到跑路避坑与故障排查，本页面按主题精细分类整理。点击右侧目录导航可以直接跳转到您关心的疑问解答部分。
+        </p>
+      </div>
+    </section>
+
+    <!-- Two-Column Layout (Main FAQ Content + Right Sticky Sidebar Directory) -->
+    <div class="faq-layout-container">
+      
+      <!-- Main Content Area -->
+      <div class="faq-main-content">
+
+        <!-- Category 1: 机场是什么 / 基础概念 -->
+        <section id="faq-basics" class="faq-group-block">
+          <h2 class="faq-group-title">一、机场是什么与基础概念</h2>
+          
+          <details class="faq-item-custom" open>
+            <summary>Q：机场是什么？</summary>
+            <div class="faq-answer">
+              <p>简单说，机场就是卖代理节点订阅的服务商。你付费买一个套餐，拿到一条订阅链接，导入 Clash、Shadowrocket 这类客户端就能用了。名字的由来据说是早期 V2Ray 客户端图标是纸飞机，慢慢就把此类服务商形象地称为“机场”。</p>
+            </div>
+          </details>
+
+          <details class="faq-item-custom">
+            <summary>Q：机场和 VPN 有什么区别？</summary>
+            <div class="faq-answer">
+              <p>两者要解决的都是科学上网问题，但产品形态不同。传统 VPN（如 ExpressVPN）通常提供单一固定官方客户端和全局流量加密；而机场卖的是“订阅链接”，你可以自由选择第三方开源客户端、自主切换节点，且支持国内应用直连、国外流量代理的智能分流。</p>
+            </div>
+          </details>
+
+          <details class="faq-item-custom">
+            <summary>Q：机场和梯子是一回事吗？</summary>
+            <div class="faq-answer">
+              <p>不完全是。“梯子”是所有翻墙工具的通用统称，而“机场”是目前最主流、使用人数最多的一种商业梯子形态（此外还有自建 VPS 节点、商用 VPN 等）。</p>
+            </div>
+          </details>
+
+          <details class="faq-item-custom">
+            <summary>Q：买机场和自己搭建节点哪个好？</summary>
+            <div class="faq-answer">
+              <p><strong>自建节点：</strong>隐私度更高、IP 独享，但需要懂得 VPS 搭建维护，且单一 VPS 一旦 IP 被封维护成本极高。<br>
+              <strong>买机场：</strong>省时省心，拥有全球多地区节点轮换与 BGP 中转/专线加速，对绝大多数日常看视频、用 AI 的用户性价比更高。</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Category 2: 新手选机场 -->
+        <section id="faq-getting-started" class="faq-group-block">
+          <h2 class="faq-group-title">二、新手怎么选机场</h2>
+
+          <details class="faq-item-custom" open>
+            <summary>Q：新手挑选机场应该看哪些核心因素？</summary>
+            <div class="faq-answer">
+              <p>核心关注 5 点：晚高峰（20:00-23:00）稳不稳定、线路拓扑（中转还是 IEPL 专线）、流媒体和 AI 工具解锁情况、资费是否合理（是否有月付），以及服务商的运营时长与口碑。</p>
+            </div>
+          </details>
+
+          <details class="faq-item-custom">
+            <summary>Q：机场购买前要注意什么？</summary>
+            <div class="faq-answer">
+              <p>建议首选支持“月付”或“小额试用”的套餐。首次购买切勿直接买年付，先花小钱验证晚高峰体验、客服响应和节点解锁情况，满意后再考虑长期套餐。另外记得保存官网的备用域名。</p>
+            </div>
+          </details>
+
+          <details class="faq-item-custom">
+            <summary>Q：机场新手最容易踩哪些坑？</summary>
+            <div class="faq-answer">
+              <p>最典型的是一上来就买年付甚至更长周期套餐，结果用了一周发现晚高峰卡顿无法使用；其次是被“终身不限流量包”等噱头吸引，忽视了服务商的运营资历与风险。</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Category 3: 机场订阅链接怎么导入 -->
+        <section id="faq-client-import" class="faq-group-block">
+          <h2 class="faq-group-title">三、机场订阅链接怎么导入</h2>
+
+          <details class="faq-item-custom" open>
+            <summary>Q：机场订阅链接是什么？</summary>
+            <div class="faq-answer">
+              <p>订阅链接是机场生成的一个专属 URL，里面包含了你能用的全部节点信息。客户端通过该链接自动拉取节点列表，机场更新节点时客户端只需刷新订阅即可同步。</p>
+            </div>
+          </details>
+
+          <details class="faq-item-custom">
+            <summary>Q：机场订阅链接怎么导入 Clash / Shadowrocket / v2rayN？</summary>
+            <div class="faq-answer">
+              <p>• <strong>Clash 系 (Clash Verge / Mihomo)：</strong>进入“配置”页面，粘贴订阅 URL 并点击下载导入。<br>
+              • <strong>Shadowrocket (小火箭)：</strong>点击右上角 “+” → 类型选择 Subscribe → 粘贴链接保存并下拉刷新。<br>
+              • <strong>v2rayN：</strong>菜单“订阅分组” → “订阅设置” → 添加 URL 保存后点击“更新订阅”。</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Category 4: 机场支持哪些客户端 -->
+        <section id="faq-client-compat" class="faq-group-block">
+          <h2 class="faq-group-title">四、机场支持哪些客户端</h2>
+
+          <details class="faq-item-custom" open>
+            <summary>Q：不同设备（Win/Mac/iPhone/安卓）推荐用什么客户端？</summary>
+            <div class="faq-answer">
+              <p>• <strong>Windows / Mac：</strong>推荐 Clash Verge Rev 或 Sing-box，支持规则分流与 TUN 模式。<br>
+              • <strong>iPhone / iPad (iOS)：</strong>首选 Shadowrocket（小火箭），其次推荐 Stash 或 Clash Mi。<br>
+              • <strong>Android (安卓)：</strong>推荐 Clash Meta (CMFA) 或 v2rayNG。</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Category 5: 机场节点怎么选 -->
+        <section id="faq-nodes-regions" class="faq-group-block">
+          <h2 class="faq-group-title">五、机场节点怎么选</h2>
+
+          <details class="faq-item-custom" open>
+            <summary>Q：机场节点倍率是什么意思？</summary>
+            <div class="faq-answer">
+              <p>倍率是流量消耗的换算比例：1.0x 倍率节点使用 1GB 扣 1GB 流量；2.0x 专线节点使用 1GB 扣 2GB 流量；0.2x 直连节点使用 1GB 仅扣 0.2GB 流量。选节点时需注意核对倍率。</p>
+            </div>
+          </details>
+
+          <details class="faq-item-custom">
+            <summary>Q：香港、日本、新加坡、美国节点怎么选？</summary>
+            <div class="faq-answer">
+              <p>• <strong>香港 / 台湾：</strong>距离最近、延迟最低，适合日常网页浏览、聊天与游戏。<br>
+              • <strong>日本 / 新加坡：</strong>解锁 AI 工具（ChatGPT/Claude）以及日区/亚区流媒体口碑极佳。<br>
+              • <strong>美国节点：</strong>主要用于美区流媒体及仅限美国 IP 访问的服务。</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Category 6: 机场卡顿、连不上怎么办 -->
+        <section id="faq-troubleshooting" class="faq-group-block">
+          <h2 class="faq-group-title">六、机场卡顿、连不上怎么办</h2>
+
+          <details class="faq-item-custom" open>
+            <summary>Q：节点超时全红或连不上怎么排查？</summary>
+            <div class="faq-answer">
+              <p>1. 手动点击“更新订阅”拉取最新节点 IP；<br>
+              2. 检查本地设备时间是否开启自动同步（系统时间误差过大直接导致 TLS 握手失败）；<br>
+              3. 检查机场后台套餐流量是否耗尽或过期；<br>
+              4. 检查官方 TG 频道确认是否正在进行线路维护或更换域名。</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Category 7: 机场流量和套餐怎么选 -->
+        <section id="faq-plans-traffic" class="faq-group-block">
+          <h2 class="faq-group-title">七、机场流量和套餐怎么选</h2>
+
+          <details class="faq-item-custom" open>
+            <summary>Q：月付套餐与不限时流量包哪个好？</summary>
+            <div class="faq-answer">
+              <p>• <strong>月付/按月重置套餐：</strong>流量单价最划算，适合每天看视频、用量大的重度用户。<br>
+              • <strong>不限时流量包：</strong>流量永久有效用完为止，适合用量较少或仅需备用线路的用户。</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Category 8: 便宜机场靠谱吗 -->
+        <section id="faq-cheap-value" class="faq-group-block">
+          <h2 class="faq-group-title">八、便宜机场靠谱吗</h2>
+
+          <details class="faq-item-custom" open>
+            <summary>Q：低价便宜机场有什么风险？</summary>
+            <div class="faq-answer">
+              <p>部分便宜机场靠成本控制做到了划算；但低价机场普遍存在节点过度超卖（晚高峰极卡）、售后响应慢甚至随时卷款跑路的风险。购买低价机场务必保持“月付”，不要购买多年大额套餐。</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Category 9: 专线、中转、直连有什么区别 -->
+        <section id="faq-line-types" class="faq-group-block">
+          <h2 class="faq-group-title">九、专线、中转、直连有什么区别</h2>
+
+          <details class="faq-item-custom" open>
+            <summary>Q：公网直连、BGP 中转与 IEPL/IPLC 专线有什么区别？</summary>
+            <div class="faq-answer">
+              <p>• <strong>直连：</strong>直接连接海外服务器，便宜但晚高峰拥堵易丢包。<br>
+              • <strong>BGP 中转：</strong>国内 BGP 入口节点优化中转，性价比最高，晚高峰流畅。<br>
+              • <strong>IEPL/IPLC 专线：</strong>企业级内网物理专线，不过 GFW 审查，零丢包、超低延迟，适合游戏与高稳定性诉求。</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Category 10: 机场能解锁 Netflix、ChatGPT 吗 -->
+        <section id="faq-streaming-ai" class="faq-group-block">
+          <h2 class="faq-group-title">十、机场能解锁 Netflix、ChatGPT 吗</h2>
+
+          <details class="faq-item-custom" open>
+            <summary>Q：机场如何解锁 Netflix 与 ChatGPT？什么是原生 IP？</summary>
+            <div class="faq-answer">
+              <p>大多数中高端机场节点均支持解锁。流媒体与 AI 平台对数据中心 IP 风控严格，原生 IP（机房与注册地一致的干净 IP）或住宅 IP 能够大幅降低提示“检测到代理”的概率。选择标注有“AI / 流媒体解锁”的节点即可。</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Category 11: 机场优惠码与免费试用靠谱吗 -->
+        <section id="faq-coupons-trial" class="faq-group-block">
+          <h2 class="faq-group-title">十一、机场优惠码与免费试用靠谱吗</h2>
+
+          <details class="faq-item-custom" open>
+            <summary>Q：免费试用与一元试用套餐值得尝试吗？</summary>
+            <div class="faq-answer">
+              <p>非常值得用来测试节点晚高峰速度与解锁能力。但请注意试用套餐通常有限额，测试满意后可升级为正式月付套餐。</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Category 12: 机场跑路怎么判断 -->
+        <section id="faq-shutdown-risk" class="faq-group-block">
+          <h2 class="faq-group-title">十二、机场跑路怎么判断</h2>
+
+          <details class="faq-item-custom" open>
+            <summary>Q：怎么判断机场会不会跑路？如何避坑？</summary>
+            <div class="faq-answer">
+              <p><strong>跑路前兆预警：</strong>无预警推出超低价“终身/五年无限流量套餐”、节点大面积全红长时间无人修复、TG 官方群封言或客服消失。<br>
+              <strong>防范对策：</strong>坚持月付，随手备份备用域名与 Telegram 公告频道，并保持拥有 1 个备用机场。</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Category 13: 机场排行榜、天梯榜靠谱吗 -->
+        <section id="faq-rankings-trust" class="faq-group-block">
+          <h2 class="faq-group-title">十三、机场排行榜、天梯榜靠谱吗</h2>
+
+          <details class="faq-item-custom" open>
+            <summary>Q：网上的机场排行榜怎么看？</summary>
+            <div class="faq-answer">
+              <p>看榜单是否公开测试方法、是否标明测试更新时间、以及是否如实指出机场缺点。只吹优点、长期不更新的榜单参考价值有限。</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Category 14: 机场账号能共享吗 -->
+        <section id="faq-account-safety" class="faq-group-block">
+          <h2 class="faq-group-title">十四、机场账号能共享吗</h2>
+
+          <details class="faq-item-custom" open>
+            <summary>Q：机场订阅链接和账号能分享给别人吗？</summary>
+            <div class="faq-answer">
+              <p>不建议分享给陌生人。订阅链接相当于账号凭证，公开分享极易触发并发设备数限制或异常流量风控导致封号。如泄露请第一时间在后台重置订阅。</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Category 15: 机场适合哪些人用 -->
+        <section id="faq-use-cases" class="faq-group-block">
+          <h2 class="faq-group-title">十五、机场适合哪些人用</h2>
+
+          <details class="faq-item-custom" open>
+            <summary>Q：外贸、留学生、程序员、游戏加速适合买什么机场？</summary>
+            <div class="faq-answer">
+              <p>• <strong>外贸 / 跨境电商：</strong>建议稳定 BGP 中转或专线，保证邮箱及后台连接稳定。<br>
+              • <strong>程序员 / AI 开发者：</strong>建议选择具备干净 IP、高稳定解封 ChatGPT 的专线机场。<br>
+              • <strong>游戏加速：</strong>机场并非专门游戏加速器，打外服游戏首选低延迟 IEPL 专线。</p>
+            </div>
+          </details>
+        </section>
+
+      </div>
+
+      <!-- Right Sticky Sidebar Table of Contents Navigation (Like Picture 2) -->
+      <aside class="faq-sidebar">
+        <div class="faq-toc-card">
+          <div class="faq-toc-title">按主题跳转</div>
+          <ul class="faq-toc-list">
+            <li class="faq-toc-item"><a href="#faq-basics">机场是什么</a></li>
+            <li class="faq-toc-item"><a href="#faq-getting-started">新手怎么选机场</a></li>
+            <li class="faq-toc-item"><a href="#faq-client-import">机场订阅链接怎么导入</a></li>
+            <li class="faq-toc-item"><a href="#faq-client-compat">机场支持哪些客户端</a></li>
+            <li class="faq-toc-item"><a href="#faq-nodes-regions">机场节点怎么选</a></li>
+            <li class="faq-toc-item"><a href="#faq-troubleshooting">机场卡顿、连不上怎么办</a></li>
+            <li class="faq-toc-item"><a href="#faq-plans-traffic">机场流量和套餐怎么选</a></li>
+            <li class="faq-toc-item"><a href="#faq-cheap-value">便宜机场靠谱吗</a></li>
+            <li class="faq-toc-item"><a href="#faq-line-types">专线、中转、直连有什么区别</a></li>
+            <li class="faq-toc-item"><a href="#faq-streaming-ai">机场能解锁 Netflix、ChatGPT 吗</a></li>
+            <li class="faq-toc-item"><a href="#faq-coupons-trial">机场优惠码与免费试用靠谱吗</a></li>
+            <li class="faq-toc-item"><a href="#faq-shutdown-risk">机场跑路怎么判断</a></li>
+            <li class="faq-toc-item"><a href="#faq-rankings-trust">机场排行榜、天梯榜靠谱吗</a></li>
+            <li class="faq-toc-item"><a href="#faq-account-safety">机场账号能共享吗</a></li>
+            <li class="faq-toc-item"><a href="#faq-use-cases">机场适合哪些人用</a></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col brand-col">
+        <h3>机场推荐与测评</h3>
+        <p>2026 最新机场推荐与测评指南，致力于提供客观、透明、可验证的科学上网与 VPN 线路测试。</p>
+        <p class="copyright">© 2026 机场推荐与测评. All Rights Reserved.</p>
+      </div>
+      <div class="footer-col">
+        <h4>快速导航</h4>
+        <ul>
+          <li><a href="index.html">机场推荐</a></li>
+          <li><a href="protocols.html">机场协议</a></li>
+          <li><a href="faq.html">机场 FAQ</a></li>
+          <li><a href="knowledge.html">知识库中心</a></li>
+          <li><a href="articles.html">文章科普</a></li>
+          <li><a href="reviews.html">详细评测</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Toast Notification -->
+  <div id="toastNotification" class="toast-notification">
+    <span id="toastMessage">已成功跳转！</span>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

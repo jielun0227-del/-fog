@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hysteria2 与 TUIC 传输协议工作原理｜文章科普</title>
+  <meta name="description" content="深入剖析基于 UDP/QUIC 协议的双边加速原理与高丢包环境下的传输优化。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="article-page-body">
+      <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <span class="logo-text">机场Fog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">机场推荐</a>
+        <a href="../knowledge.html">知识库</a>
+        <a href="../articles.html">文章科普</a>
+        <a href="../reviews.html">详细评测</a>
+        <a href="../about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+
+  
+  <!-- Header / Navigation Bar -->
+      
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">首页</a></li>
+        <li class="separator">/</li>
+        <li><a href="../articles.html">文章科普</a></li>
+        <li class="separator">/</li>
+        <li class="current">Hysteria2 & TUIC 协议解析</li>
+      </ol>
+    </nav>
+
+    <!-- Article Hero Section -->
+    <section class="article-hero">
+      <h1 class="article-title">Hysteria2 与 TUIC 传输协议工作原理</h1>
+      <div class="article-meta">
+        <span class="meta-item">2026年9月更新</span>
+        <span class="meta-dot">•</span>
+        <span class="meta-item">深度技术原理</span>
+      </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <div class="table-of-contents">
+      <div class="toc-title">文章目录</div>
+      <ul class="toc-list">
+        <li><a href="#section-1">一、传统 TCP 协议在晚高峰丢包下的性能瓶颈</a></li>
+        <li><a href="#section-2">二、Hysteria2 的拥塞控制算法与双边加速</a></li>
+        <li><a href="#section-3">三、TUIC v5 架构优势与多路复用技术</a></li>
+        <li><a href="#section-4">四、部署环境要求与客户端选型</a></li>
+      </ul>
+    </div>
+
+    <section class="content-card">
+      <h2 id="section-1">一、传统 TCP 协议在晚高峰丢包下的性能瓶颈</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        在国际跨境网络传输中，传统 TCP 协议受到慢启动与拥塞避免机制的限制。当晚高峰过境丢包率达到 5%~10% 时，TCP 传输速率会呈指数级下降。
+      </p>
+    </section>
+
+    <section class="content-card">
+      <h2 id="section-2">二、Hysteria2 的拥塞控制算法与双边加速</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        Hysteria2 专为恶劣网络环境设计，基于修改版的 QUIC/UDP 协议，主动放宽传统 TCP 的退让策略，在大丢包环境下依然能跑满带宽极限。
+      </p>
+    </section>
+
+    <section class="content-card">
+      <h2 id="section-3">三、TUIC v5 架构优势与多路复用技术</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        TUIC 利用 QUIC 原生多路复用能力，使所有 TCP 与 UDP 流量共享一条 QUIC 连接，消除了首包 RTT 握手开销。
+      </p>
+    </section>
+
+    <section class="content-card">
+      <h2 id="section-4">四、部署环境要求与客户端选型</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        目前 Sing-box、Clash-Verge-Rev 以及 Shadowrocket 等主流代理工具均已完整原生支持 Hysteria2 与 TUIC v5 协议。
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer Section -->
+      
+
+  <script src="../script.js"></script>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 机场Fog 评测博客. 保留所有权利。</p>
+    </div>
+  </footer>
+</body>
+</html>

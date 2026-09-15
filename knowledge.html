@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>科学上网与 VPN 知识库中心｜传输协议、线路拓扑与客户端配置 - 机场测评博客</title>
+  <meta name="description" content="科学上网与 VPN 知识库中心，全面收录代理传输协议详解、线路拓扑（公网直连/BGP中转/IEPL专线）、全平台客户端选型指南及安全防泄露分流规则。">
+  <meta name="keywords" content="VPN知识库, 科学上网知识库, 代理传输协议, Hysteria2, TUIC, IEPL专线, IPLC专线, Shadowsocks, Clash配置, 翻墙教程">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header / Navigation Bar -->
+    <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="./images/site_logo.png" alt="机场fog Logo" class="site-logo-img">
+        <span class="logo-text">机场Fog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">机场推荐</a>
+        <a href="knowledge.html">知识库</a>
+        <a href="articles.html">文章科普</a>
+        <a href="reviews.html">详细评测</a>
+        <a href="protocols.html">机场协议</a>
+        <a href="faq.html">机场FAQ</a>
+        <a href="about.html">关于</a>
+        <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="切换主题模式" title="切换深色/浅色模式">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">首页</a></li>
+        <li class="separator">/</li>
+        <li class="current">知识库</li>
+      </ol>
+    </nav>
+
+    <!-- Article Header Hero Section -->
+    <section class="article-hero">
+      <h1 class="article-title">网络与代理知识库</h1>
+      <div class="article-meta">
+        <span class="meta-item">2026年8月更新</span>
+      </div>
+    </section>
+
+    <!-- Article Directory & Catalog Section -->
+    <section class="catalog-section">
+      <div class="catalog-layout">
+        <!-- Main Catalog Area: 2 Articles per row -->
+        <div class="catalog-main-content">
+          <div class="section-tag-header">
+            <h2>知识库目录</h2>
+            <p style="color: var(--text-sub); font-size: 0.9rem; margin-top: 0.25rem;">整理传输协议、网络线路拓扑、客户端选型与防泄露设置。</p>
+          </div>
+
+          <div class="catalog-grid-2col">
+            <!-- Catalog Item 1: Clash Verge -->
+            <div class="catalog-card">
+              <div class="catalog-card-header">
+                <span>Clash Verge 全平台安装配置教程</span>
+                <a href="articles/clash-verge-guide.html">阅读全文 →</a>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Windows/macOS/Linux 桌面端安装、订阅导入、TUN 模式开启及常见故障排查。</p>
+              <ul class="catalog-sublist">
+                <li><a href="articles/clash-verge-guide.html#section-1">一、为什么推荐 Clash Verge？</a></li>
+                <li><a href="articles/clash-verge-guide.html#section-2">二、版本获取与安装要点</a></li>
+                <li><a href="articles/clash-verge-guide.html#section-3">三、订阅链接导入与基础配置</a></li>
+                <li><a href="articles/clash-verge-guide.html#section-4">四、常见故障与排查方案</a></li>
+              </ul>
+            </div>
+
+            <!-- Catalog Item 2: Android Clash Meta -->
+            <div class="catalog-card">
+              <div class="catalog-card-header">
+                <span>Android Clash Meta 使用指南</span>
+                <a href="articles/android-clash-guide.html">阅读全文 →</a>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">安卓手机 CMFA 下载安装、权限设置、订阅 URL 导入及后台保活配置。</p>
+              <ul class="catalog-sublist">
+                <li><a href="articles/android-clash-guide.html#section-1">一、Android 端代理客户端选型现状</a></li>
+                <li><a href="articles/android-clash-guide.html#section-2">二、APK 下载与权限授权事项</a></li>
+                <li><a href="articles/android-clash-guide.html#section-3">三、订阅 URL 导入与启用步骤</a></li>
+                <li><a href="articles/android-clash-guide.html#section-4">四、常见问题排查与优化配置</a></li>
+              </ul>
+            </div>
+
+            <!-- Catalog Item 3: iOS Clash Mi -->
+            <div class="catalog-card">
+              <div class="catalog-card-header">
+                <span>iOS Clash Mi 实战配置教程</span>
+                <a href="articles/ios-clash-mi-guide.html">阅读全文 →</a>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">苹果 iPhone/iPad 设备 App Store 下载、订阅导入、TUN 覆写及内存排查。</p>
+              <ul class="catalog-sublist">
+                <li><a href="articles/ios-clash-mi-guide.html#section-1">一、Clash Mi 软件特色与优势</a></li>
+                <li><a href="articles/ios-clash-mi-guide.html#section-2">二、获取与安装方式 (Apple ID 说明)</a></li>
+                <li><a href="articles/ios-clash-mi-guide.html#section-3">三、三步快速导入订阅与开启连接</a></li>
+                <li><a href="articles/ios-clash-mi-guide.html#section-4">四、常见故障与 FAQ 排查</a></li>
+              </ul>
+            </div>
+
+            <!-- Catalog Item 4 -->
+            <div class="catalog-card">
+              <div class="catalog-card-header">
+                <span>代理传输协议对比</span>
+                <a href="articles/protocols-comparison.html">阅读全文 →</a>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">对比 Shadowsocks, Trojan, VLESS (Reality), Hysteria2 与 TUIC 协议差异。</p>
+              <ul class="catalog-sublist">
+                <li><a href="articles/protocols-comparison.html#section-1">一、经典协议：Shadowsocks 与 Trojan</a></li>
+                <li><a href="articles/protocols-comparison.html#section-2">二、无证书伪装：VLESS + Reality</a></li>
+                <li><a href="articles/protocols-comparison.html#section-3">三、UDP/QUIC 加速：Hysteria2 与 TUIC</a></li>
+                <li><a href="articles/protocols-comparison.html#section-4">四、综合对比与选型建议</a></li>
+              </ul>
+            </div>
+
+            <!-- Catalog Item 5: Shadowrocket -->
+            <div class="catalog-card">
+              <div class="catalog-card-header">
+                <span>iOS 小火箭 (Shadowrocket) 配置指南</span>
+                <a href="articles/shadowrocket-guide.html">阅读全文 →</a>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">iOS 平台小火箭美区下载、订阅链接导入、路由分流与排障说明。</p>
+              <ul class="catalog-sublist">
+                <li><a href="articles/shadowrocket-guide.html">一、下载与安装方式</a></li>
+                <li><a href="articles/shadowrocket-guide.html">二、快速导入机场订阅</a></li>
+                <li><a href="articles/shadowrocket-guide.html">三、路由模式与延迟测试设置</a></li>
+                <li><a href="articles/shadowrocket-guide.html">四、常见排障与 FAQ</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar Area: Sticky Right Navigation Directory -->
+        <aside class="catalog-sidebar">
+          <div class="sidebar-widget">
+            <h3 class="widget-title">知识库目录</h3>
+            <ul class="sidebar-catalog-list">
+              <li class="sidebar-catalog-item">
+                <a href="articles/clash-verge-guide.html">Clash Verge 全平台安装 <span>→</span></a>
+                <ul class="sidebar-sub-list">
+                  <li><a href="articles/clash-verge-guide.html#section-1">选型与内核优势</a></li>
+                  <li><a href="articles/clash-verge-guide.html#section-2">版本获取与安装要点</a></li>
+                  <li><a href="articles/clash-verge-guide.html#section-3">订阅导入与 TUN 模式</a></li>
+                </ul>
+              </li>
+              <li class="sidebar-catalog-item">
+                <a href="articles/android-clash-guide.html">Android Clash Meta 指南 <span>→</span></a>
+                <ul class="sidebar-sub-list">
+                  <li><a href="articles/android-clash-guide.html#section-1">CMFA 客户端选型</a></li>
+                  <li><a href="articles/android-clash-guide.html#section-2">APK 安装与权限</a></li>
+                  <li><a href="articles/android-clash-guide.html#section-3">订阅导入与分流保活</a></li>
+                </ul>
+              </li>
+              <li class="sidebar-catalog-item">
+                <a href="articles/ios-clash-mi-guide.html">iOS Clash Mi 实战教程 <span>→</span></a>
+                <ul class="sidebar-sub-list">
+                  <li><a href="articles/ios-clash-mi-guide.html#section-1">Clash Mi 软件优势</a></li>
+                  <li><a href="articles/ios-clash-mi-guide.html#section-2">App Store 获取方式</a></li>
+                  <li><a href="articles/ios-clash-mi-guide.html#section-3">三步导入与内存断连</a></li>
+                </ul>
+              </li>
+              <li class="sidebar-catalog-item">
+                <a href="articles/protocols-comparison.html">代理传输协议详解 <span>→</span></a>
+                <ul class="sidebar-sub-list">
+                  <li><a href="articles/protocols-comparison.html#section-1">Shadowsocks & Trojan</a></li>
+                  <li><a href="articles/protocols-comparison.html#section-2">VLESS + Reality 伪装</a></li>
+                  <li><a href="articles/protocols-comparison.html#section-3">Hysteria2 & TUIC 协议</a></li>
+                </ul>
+              </li>
+              <li class="sidebar-catalog-item">
+                <a href="articles/shadowrocket-guide.html">Shadowrocket 配置指南 <span>→</span></a>
+                <ul class="sidebar-sub-list">
+                  <li><a href="articles/shadowrocket-guide.html">非大陆区 App Store 获取</a></li>
+                  <li><a href="articles/shadowrocket-guide.html">订阅 URL / 二维码导入</a></li>
+                  <li><a href="articles/shadowrocket-guide.html">路由模式与延迟测试</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Knowledge Base FAQ Section -->
+    <section class="faq-section" style="margin-top: 3rem;">
+      <h2>常见问题</h2>
+      <div class="faq-accordion">
+        <details class="faq-item" open>
+          <summary class="faq-question">Q: Hysteria2 和 TUIC 协议适合什么样的网络环境？</summary>
+          <div class="faq-answer">
+            <p>Hysteria2 和 TUIC 都是基于 UDP/QUIC 协议开发的新一代代理协议。它们最大的优势在于面对晚高峰高丢包网络（如移动宽带、长城宽带或公网直连线路）时，能够通过积极的拥塞控制算法拉满带宽，避免传统 TCP 协议因丢包导致速度断崖式下跌。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Q: 为什么 IEPL 专线比公网直连中转更贵？值得买吗？</summary>
+          <div class="faq-answer">
+            <p>IEPL (International Ethernet Private Line) 是企业级的点对点物理内网专线，数据不过 GFW 审查防火墙，因此具有零丢包、超低延迟和不受敏感时期封锁影响的特点。对于玩外服游戏、高频交易或追求极致稳定体验的用户来说非常值得。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Q: 如何防止本地真实 IP 发生 DNS 或 WebRTC 泄露？</summary>
+          <div class="faq-answer">
+            <p>1. 在代理客户端中启用 DoH (DNS-over-HTTPS) 或 DoT (DNS-over-TLS) 加密 DNS 服务。<br>2. 开启客户端的“假 IP” (Fake-IP) 模式。<br>3. 在浏览器设置中禁用 WebRTC 或使用 Disable WebRTC 扩展插件。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col brand-col">
+        <h3>机场推荐与测评</h3>
+        <p>专注于 2026 最新机场推荐、线路实测与科学上网技术科普。提供最客观、真实的数据参考。</p>
+        <p>© 2026 机场推荐与测评. All Rights Reserved.</p>
+      </div>
+      
+      <div class="footer-col">
+        <h4>快速导航</h4>
+        <ul>
+          <li><a href="index.html">返回首页</a></li>
+          <li><a href="index.html#airports-table">机场推荐</a></li>
+          <li><a href="knowledge.html">知识库中心</a></li>
+          <li><a href="articles.html">文章科普中心</a></li>
+          <li><a href="reviews.html">详细评测</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>知识库精选</h4>
+        <ul>
+          <li><a href="articles/protocols-comparison.html">代理传输协议详解</a></li>
+          <li><a href="articles/transit-vs-iepl.html">线路拓扑与传输质量</a></li>
+          <li><a href="articles/clients-guide.html">全平台客户端选型指南</a></li>
+          <li><a href="articles/security-dns-guide.html">安全防泄露与分流规则</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

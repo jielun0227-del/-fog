@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>科学上网与机场配置常见问题解答 Q&A 避坑指南 - 椰汁网络日志</title>
+    <title>科学上网与机场配置常见问题解答 Q&A 避坑指南 - 机场Fog 测评博客</title>
     <meta name="description" content="科学上网与机场配置常见问题解答。为您科普翻墙合规与法律注意事项、如何区分VPN与机场、自建梯子与机场对比、如何测试机场翻墙速度以及如何正确选择网络代理协议，助您安全避坑。">
     <meta name="keywords" content="科学上网Q&A, 机场配置, 翻墙违法吗, 代理协议选择, 机场测速">
     <meta name="geo.region" content="CN" />
     <meta name="geo.placename" content="China" />
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../styles.css">
     <style>
         .qa-box {
             background: rgba(0, 150, 199, 0.03);
@@ -67,29 +67,26 @@
         }
     </style>
 </head>
-<body>
+<body class="article-page-body">
 
     <!-- 顶部导航栏 -->
-    <header class="header">
-        <nav class="nav-container">
-            <a href="../index.html" class="logo">
-                <span>椰汁网络日志</span><div class="logo-dot"></div>
-            </a>
-            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <div class="nav-menu" id="nav-menu">
-                <a href="../index.html">网站首页</a>
-                <a href="../ranking.html">机场排行</a>
-                <a href="../tutorial.html">小白教程</a>
-                <a href="../articles.html" class="active">技术评测</a>
-<a href="../contact.html">商务合作</a>
-                <a href="../share-guide.html">账号合租指南</a>
-            </div>
-        </nav>
-    </header>
+          <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <span class="logo-text">机场Fog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">机场推荐</a>
+        <a href="../knowledge.html">知识库</a>
+        <a href="../articles.html">文章科普</a>
+        <a href="../reviews.html">详细评测</a>
+        <a href="../about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+
+
 
     <!-- 主布局 -->
     <div class="layout-wrapper">
@@ -98,18 +95,18 @@
                 <header class="article-header">
                     <h1>科学上网与机场配置常见问题解答 Q&A 避坑指南</h1>
                     <div class="article-meta">
-                        <span>📅 发布日期：2026-07-17</span>
-                        <span>🏷️ 分类：科普避坑</span>
-                        <span>👤 作者：椰汁评测组</span>
+                        <span> 发布日期：2026-07-17</span>
+                        <span> 分类：科普避坑</span>
+                        <span> 作者：机场Fog 测评团队</span>
                     </div>
                 </header>
                 
                 <section class="article-body">
-                    <p>在日常使用网络和配置加速服务的过程中，不管是新手还是有一定经验的用户，总会遇到各种各样的问题。从法律合规底线，到 VPN 协议的选择，再到自建梯子与商业机场的利弊权衡，信息不对称往往会导致许多人不小心踩坑。本文由椰汁网络日志评测组整理，旨在解答大家在科学上网与机场配置中的核心常见疑问。</p>
+                    <p>在日常使用网络和配置加速服务的过程中，不管是新手还是有一定经验的用户，总会遇到各种各样的问题。从法律合规底线，到 VPN 协议的选择，再到自建梯子与商业机场的利弊权衡，信息不对称往往会导致许多人不小心踩坑。本文由评测组整理，旨在解答大家在科学上网与机场配置中的核心常见疑问。</p>
 
                     <div class="qa-box">
                         <div class="qa-question">
-                            <span>❓</span> 科学上网（翻墙）违法吗？合规边界在哪里？
+                            <span></span> 科学上网（翻墙）违法吗？合规边界在哪里？
                         </div>
                         <div class="qa-answer">
                             <p>这是大家最常问的问题。在我国，互联网跨境联网受法律严格管理。<strong>对于个人用户而言，科学上网通常处于“灰色地带”</strong>。只要你不涉及传播政治敏感、谣言、不良信息，并且不倒卖、分发科学上网工具，一般不会被网警关注。换句话说，用于学术科研、外贸办公、娱乐追剧，保持“谨言慎行、低调合法”的原则是安全的。</p>
@@ -132,7 +129,7 @@
 
                     <div class="qa-box">
                         <div class="qa-question">
-                            <span>❓</span> 有什么好用的翻墙VPN推荐？VPN和机场有什么区别？
+                            <span></span> 有什么好用的翻墙VPN推荐？VPN和机场有什么区别？
                         </div>
                         <div class="qa-answer">
                             <p>很多新手口中常说的“翻墙VPN”其实是一个广义的俗称。事实上，传统的 VPN 协议（如 OpenVPN, L2TP, PPTP, IPSec）<strong>早已无法在中国大陆正常使用</strong>，因为它们的流量特征非常明显，防火长城（GFW）可以轻易对其进行阻断和封锁。目前（2026年）那些仍然能稳定出海的软件，采用的是专门针对抗封锁研发的<strong>现代混淆代理协议</strong>（如 Shadowsocks, Trojan, VMess, Hysteria 2 等）。</p>
@@ -143,7 +140,7 @@
 
                     <div class="qa-box">
                         <div class="qa-question">
-                            <span>❓</span> 购买机场梯子 vs 个人自建节点，哪个更好？
+                            <span></span> 购买机场梯子 vs 个人自建节点，哪个更好？
                         </div>
                         <div class="qa-answer">
                             <p>简而言之：<strong>追求省心、速度与看视频体验，选机场；追求数据隐私绝对掌控，且具备技术背景，选自建。</strong></p>
@@ -188,7 +185,7 @@
 
                     <div class="qa-box">
                         <div class="qa-question">
-                            <span>❓</span> 如何正确测试机场的翻墙网速与稳定性？
+                            <span></span> 如何正确测试机场的翻墙网速与稳定性？
                         </div>
                         <div class="qa-answer">
                             <p>许多人在客户端里狂点“延迟测试”或“Ping测试”，看到绿色几毫秒就觉得快，这是极其错误的。客户端测得的 Ping 值往往只是你到国内中转入口的延迟，<strong>并不代表你到海外目标网站的真实速度</strong>。</p>
@@ -203,7 +200,7 @@
 
                     <div class="qa-box">
                         <div class="qa-question">
-                            <span>❓</span> Shadowsocks、Trojan、Vmess、Hysteria 2 这些协议该怎么选？
+                            <span></span> Shadowsocks、Trojan、Vmess、Hysteria 2 这些协议该怎么选？
                         </div>
                         <div class="qa-answer">
                             <p>很多用户在导入订阅时，纠结到底是用 SS 还是用 Trojan 节点。事实上，如果是使用机场，这并没有本质区别，因为<strong>机场的线路优化（是否有专线、BGP中转）对速度起决定性作用，而协议本身的影响非常微弱</strong>。直接选择机场推荐的默认节点组即可。</p>
@@ -221,7 +218,7 @@
 
         <aside class="sidebar">
             <div class="widget">
-                <h3 class="widget-title">⚙️ 相关推荐</h3>
+                <h3 class="widget-title">此页内容</h3>
                 <ul class="widget-links">
                     <li><a href="why-paid-airports.html">付费机场与免费网络代理对比</a></li>
                     <li><a href="protocols-comparison.html">代理协议对比：SS vs Trojan vs VMess</a></li>
@@ -233,37 +230,12 @@
     </div>
 
     <!-- 页脚 -->
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <a href="../index.html" class="logo">
-                    <span>椰汁网络日志</span><div class="logo-dot"></div>
-                </a>
-                <p>致力于提供2026年最新、最客观的代理服务与机场推荐，普及网络协议常识，帮助用户安全无障碍地浏览全球互联网资源。</p>
-            </div>
-            <div class="footer-links">
-                <div class="footer-nav-col">
-                    <h4>快速导航</h4>
-                    <a href="../index.html">网站首页</a>
-                    <a href="../tutorial.html">使用教程</a>
-                    <a href="../articles.html">技术评测</a>
-</div>
-                <div class="footer-nav-col">
-                    <h4>客户端下载</h4>
-                    <a href="../tutorial.html#windows">Clash Verge (Win)</a>
-                    <a href="../tutorial.html#macos">Clash Verge (Mac)</a>
-                    <a href="../tutorial.html#android">Clash for Android</a>
-                </div>
-                <div class="footer-nav-col">
-                    <h4>支持与合作</h4>
-<a href="../contact.html">商务对接</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <p>&copy; 2026 椰汁网络日志. All Rights Reserved. 推荐节点仅限用于正规跨境科研与外贸办公。</p>
-        </div>
-    </footer>
+      <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 . 保留所有权利。</p>
+    </div>
+  </footer>
+
 
     <script src="../js/canvas-bg.js"></script>
     <script src="../js/app.js"></script>

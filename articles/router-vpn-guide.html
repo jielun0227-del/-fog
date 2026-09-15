@@ -3,36 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>路由器翻墙详细教程：最佳 OpenWrt/路由器客户端配置指南 - 椰汁网络日志</title>
+    <title>路由器翻墙详细教程：最佳 OpenWrt/路由器客户端配置指南 - 机场Fog 测评博客</title>
     <meta name="description" content="2026年最新OpenWrt软路由/路由器科学上网详细教程。介绍OpenClash与Mihomo等软路由客户端的订阅安装、全局接管配置步骤，实现全屋设备无感出海。">
     <meta name="keywords" content="路由器翻墙, OpenWrt配置, OpenClash教程, 软路由科学上网, 全屋无感翻墙">
     <meta name="geo.region" content="CN" />
     <meta name="geo.placename" content="China" />
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../styles.css">
 </head>
-<body>
+<body class="article-page-body">
 
     <!-- 顶部导航栏 -->
-    <header class="header">
-        <nav class="nav-container">
-            <a href="../index.html" class="logo">
-                <span>椰汁网络日志</span><div class="logo-dot"></div>
-            </a>
-            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-                                    <div class="nav-menu" id="nav-menu">
-                <a href="../index.html">网站首页</a>
-                <a href="../ranking.html">机场排行</a>
-                <a href="../tutorial.html">小白教程</a>
-                <a href="../articles.html" class="active">技术评测</a>
-<a href="../contact.html">商务合作</a>
-                <a href="../share-guide.html">账号合租指南</a>
-            </div>
-        </nav>
-    </header>
+          <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <span class="logo-text">机场Fog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">机场推荐</a>
+        <a href="../knowledge.html">知识库</a>
+        <a href="../articles.html">文章科普</a>
+        <a href="../reviews.html">详细评测</a>
+        <a href="../about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+
+
 
     <!-- 主布局 -->
     <div class="layout-wrapper">
@@ -41,15 +38,15 @@
                 <header class="article-header">
                     <h1>路由器翻墙详细教程：最佳 OpenWrt/路由器客户端配置指南</h1>
                     <div class="article-meta">
-                        <span>📅 发布日期：2026-07-06</span>
-                        <span>🏷️ 路由器/软路由</span>
-                        <span>👤 作者：椰汁评测组</span>
+                        <span> 发布日期：2026-07-06</span>
+                        <span> 路由器/软路由</span>
+                        <span> 作者：机场Fog 测评团队</span>
                     </div>
                 </header>
                 
                 <section class="article-body">
-                    <p>对于智能家居设备繁多、或有 Apple TV / 电视盒子观影需求的用户来说，在每个手机和电脑终端上单独配置科学上网客户端不仅麻烦，还容易遇到抢占网速的问题。最好的解决方案是**在路由器（特别是基于 OpenWrt 的软路由）上配置代理客户端**。这样能直接实现“全屋所有联网设备自动无感出海”，极其丝滑。</p>
-                    <p>本篇文章，椰汁评测组就以 OpenWrt 平台上目前最主流、最强大的 <strong>OpenClash</strong> 插件为例，教大家如何快速配置路由器网络，开启全屋无感翻墙之旅。</p>
+                    <p>对于智能家居设备繁多、或有 Apple TV / 电视盒子观影需求的用户来说，在每个手机和电脑终端上单独配置科学上网客户端不仅麻烦，还容易遇到抢占网速的问题。最好的解决方案是<strong>在路由器（特别是基于 OpenWrt 的软路由）上配置代理客户端</strong>。这样能直接实现“全屋所有联网设备自动无感出海”，极其丝滑。</p>
+                    <p>本篇文章，机场Fog 测评团队就以 OpenWrt 平台上目前最主流、最强大的 <strong>OpenClash</strong> 插件为例，教大家如何快速配置路由器网络，开启全屋无感翻墙之旅。</p>
 
                     <h2>一、前期准备与客户端下载</h2>
                     <p>首先，你需要确保你的路由器使用的是 OpenWrt 固件（支持安装第三方 ipk 插件），或者是现成的软路由设备。如果你的固件中没有集成 OpenClash，可以前往 GitHub 官方仓库下载最新的 OpenClash ipk 包以及内核（Mihomo/Clash Meta 内核）进行安装部署。</p>
@@ -83,7 +80,7 @@
 
         <aside class="sidebar">
             <div class="widget">
-                <h3 class="widget-title">⚙️ 相关推荐</h3>
+                <h3 class="widget-title">此页内容</h3>
                 <ul class="widget-links">
                     <li><a href="clash-verge-guide.html">Clash Verge 配置教程</a></li>
                     <li><a href="prevent-running.html">机场跑路避坑常识</a></li>
@@ -94,37 +91,12 @@
     </div>
 
     <!-- 页脚 -->
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-brand">
-                <a href="../index.html" class="logo">
-                    <span>椰汁网络日志</span><div class="logo-dot"></div>
-                </a>
-                <p>致力于提供2026年最新、最客观的代理服务与机场推荐，普及网络协议常识，帮助用户安全无障碍地浏览全球互联网资源。</p>
-            </div>
-            <div class="footer-links">
-                <div class="footer-nav-col">
-                    <h4>快速导航</h4>
-                    <a href="../index.html">网站首页</a>
-                    <a href="../tutorial.html">使用教程</a>
-                    <a href="../articles.html">技术评测</a>
-</div>
-                <div class="footer-nav-col">
-                    <h4>客户端下载</h4>
-                    <a href="../tutorial.html#windows">Clash Verge (Win)</a>
-                    <a href="../tutorial.html#macos">Clash Verge (Mac)</a>
-                    <a href="../tutorial.html#android">Clash for Android</a>
-                </div>
-                <div class="footer-nav-col">
-                    <h4>支持与合作</h4>
-<a href="../contact.html">商务对接</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <p>&copy; 2026 椰汁网络日志. All Rights Reserved. 推荐节点仅限用于正规跨境科研与外贸办公。</p>
-        </div>
-    </footer>
+      <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 . 保留所有权利。</p>
+    </div>
+  </footer>
+
 
     <script src="../js/canvas-bg.js"></script>
     <script src="../js/app.js"></script>

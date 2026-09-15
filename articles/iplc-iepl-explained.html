@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IPLC 与 IEPL 专线传输技术详解｜文章科普</title>
+  <meta name="description" content="解读企业级国际光纤专线的物理点对点链路拓扑与过境链路差异。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="article-page-body">
+      <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <span class="logo-text">机场Fog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">机场推荐</a>
+        <a href="../knowledge.html">知识库</a>
+        <a href="../articles.html">文章科普</a>
+        <a href="../reviews.html">详细评测</a>
+        <a href="../about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+
+  
+  <!-- Header / Navigation Bar -->
+      
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">首页</a></li>
+        <li class="separator">/</li>
+        <li><a href="../articles.html">文章科普</a></li>
+        <li class="separator">/</li>
+        <li class="current">IPLC / IEPL 专线技术</li>
+      </ol>
+    </nav>
+
+    <!-- Article Hero Section -->
+    <section class="article-hero">
+      <h1 class="article-title">IPLC 与 IEPL 专线传输技术详解</h1>
+      <div class="article-meta">
+        <span class="meta-item">2026年9月更新</span>
+        <span class="meta-dot">•</span>
+        <span class="meta-item">深度技术原理</span>
+      </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <div class="table-of-contents">
+      <div class="toc-title">文章目录</div>
+      <ul class="toc-list">
+        <li><a href="#section-1">一、什么是 IPLC / IEPL 国际内网专线？</a></li>
+        <li><a href="#section-2">二、物理点对点链路拓扑结构</a></li>
+        <li><a href="#section-3">三、公网中转与物理专线在抖动及安全上的对比</a></li>
+        <li><a href="#section-4">四、专线机场选型评估要点</a></li>
+      </ul>
+    </div>
+
+    <section class="content-card">
+      <h2 id="section-1">一、什么是 IPLC / IEPL 国际内网专线？</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        IPLC（International Private Leased Circuit）与 IEPL（International Ethernet Private Line）是电信运营商提供的物理层/数据链路层跨境专用电路。
+      </p>
+    </section>
+
+    <section class="content-card">
+      <h2 id="section-2">二、物理点对点链路拓扑结构</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        数据从入口机房通过光纤租用专线直达出口机房，完全绕过了公网国际出口 GFW 防火墙的检查与过境堵塞。
+      </p>
+    </section>
+
+    <section class="content-card">
+      <h2 id="section-3">三、公网中转与物理专线在抖动及安全上的对比</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        相比普通 BGP 隧道中转，IEPL 专线具备极高的稳定度与固定的延迟（丢包率接近 0%），是外服游戏与高频交易的首选。
+      </p>
+    </section>
+
+    <section class="content-card">
+      <h2 id="section-4">四、专线机场选型评估要点</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        选购专线机场时应重点关注：是否为全节点专线、SLA 保证率、以及套餐折合月价是否合理。
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer Section -->
+      
+
+  <script src="../script.js"></script>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 机场Fog 评测博客. 保留所有权利。</p>
+    </div>
+  </footer>
+</body>
+</html>

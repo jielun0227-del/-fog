@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPT-6 Astra 安全边界与 MAG 机场数据泄露周报｜文章科普</title>
+  <meta name="description" content="2026 年 9 月首周网络安全与技术周报，关注 GPT-6 Astra 网络安全能力门槛、英国 MAG 机场客户数据泄露、欧盟与中国 AI 平台治理、sing-box 1.14 迁移实操。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="article-page-body">
+      <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <span class="logo-text">机场Fog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">机场推荐</a>
+        <a href="../knowledge.html">知识库</a>
+        <a href="../articles.html">文章科普</a>
+        <a href="../reviews.html">详细评测</a>
+        <a href="../about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+
+  
+  <!-- Header / Navigation Bar -->
+      
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">首页</a></li>
+        <li class="separator">/</li>
+        <li><a href="../articles.html">文章科普</a></li>
+        <li class="separator">/</li>
+        <li class="current">GPT-6 Astra 安全能力与机场数据泄露周报</li>
+      </ol>
+    </nav>
+
+    <!-- Article Hero Section -->
+    <section class="article-hero">
+      <h1 class="article-title">GPT-6 Astra 安全能力与机场数据泄露周报 (2026-09-03)</h1>
+      <div class="article-meta">
+        <span class="meta-item">2026年9月更新</span>
+        <span class="meta-dot">•</span>
+        <span class="meta-item">深度阅读与指南</span>
+      </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <div class="table-of-contents">
+      <div class="toc-title">文章目录</div>
+      <ul class="toc-list">
+        <li><a href="#section-1">一、GPT-6 Astra 网络安全能力与 Trusted Access 边界</a></li>
+        <li><a href="#section-2">二、MAG 机场 870 万客户资料泄露：钓鱼风险预警</a></li>
+        <li><a href="#section-3">三、sing-box 1.14 大版本发布与配置迁移注意点</a></li>
+        <li><a href="#section-4">四、欧盟 DSA 与 AI 平台治理审计趋势</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1 -->
+    <section class="content-card">
+      <h2 id="section-1">一、GPT-6 Astra 网络安全能力与 Trusted Access 边界</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        OpenAI 最新安全概览显示，<strong>GPT-6 Astra</strong> 首次达到了其 Preparedness Framework 框架下定义的 Critical 网络安全门槛。在配备合适工具与访问权限的前提下，模型具备了在没有人工逐步指令的情况下发现未知零日漏洞（Zero-day）并开发利用工具的能力。
+      </p>
+      <p style="color: var(--text-muted); line-height: 1.8; margin-top: 0.75rem;">
+        为了防止安全风险失控，首批滚动开放对象仅限 Trusted Access Program 企业。对于开发者与普通用户，切勿轻信未受信任的第三方“提前代充”或非官方中转接口，应以官方型号页和授权通道为准。
+      </p>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="content-card">
+      <h2 id="section-2">二、MAG 机场 870 万客户资料泄露：钓鱼风险预警</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        曼彻斯特机场集团（MAG）确认发生数据安全事件，受影响数据包含客户电子邮箱、电话号码、车牌号及邮政编码，预计涉及约 870 万名旅客。虽然支付卡信息与机场实际航班运营未受直接破坏，但这组数据的组合构成了高度可信的精准钓鱼攻击土壤。
+      </p>
+      <ul style="margin-left: 1.5rem; color: var(--text-muted); line-height: 1.8; margin-top: 0.5rem;">
+        <li><strong>组合钓鱼风险：</strong> 攻击者可拼接真实的“车牌号 + 预订邮箱 + 航班时间”发送欺诈性补缴费或退款链接。</li>
+        <li><strong>防护建议：</strong> 收到涉及机场退费或车辆补缴通知时，切勿直接点击邮件内链接，务必通过官方保存的独立入口验证。</li>
+      </ul>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="content-card">
+      <h2 id="section-3">三、sing-box 1.14 大版本发布与配置迁移注意点</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        通用网络工具内核 <strong>sing-box 正式更新至 1.14.0</strong>。新版本增加了 OpenVPN、Snell、L3 转发以及桌面独立客户端，但同时引入了重要的迁移变更：
+      </p>
+      <ul style="margin-left: 1.5rem; color: var(--text-muted); line-height: 1.8; margin-top: 0.5rem;">
+        <li><strong>Apple 平台开发者迁移：</strong> 旧版 App Store 版 sing-box VT 需迁移至新开发者账号下的 sing-box MT，配置无法自动无缝继承，升级前务必导出备份。</li>
+        <li><strong>DNS 语法调整：</strong> 部分旧版地址过滤字段与旧版 strategy 动作已被标为废弃，将在 1.16 版本彻底移除，建议及时更新配置文件结构。</li>
+        <li><strong>QUIC 指纹与证书：</strong> Hysteria2 默认开启的 Chrome QUIC 指纹模拟可能会与使用 Ed25519 证书的服务端产生握手异常，遇到连通性故障时需先排查配置参数而非盲目归因于线路封锁。</li>
+      </ul>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="content-card">
+      <h2 id="section-4">四、欧盟 DSA 与 AI 平台治理审计趋势</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        随着欧盟《数字服务法案》（DSA）全面生效，主要云计算平台与 AI 服务提供商正在迎来第一波强制合规性审计。重点审查方向包括训练数据的版权合规、系统级防范伪造与防误导机制、以及跨国网络接口的安全防范。
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer Section -->
+      
+
+  <script src="../script.js"></script>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 机场Fog 评测博客. 保留所有权利。</p>
+    </div>
+  </footer>
+</body>
+</html>

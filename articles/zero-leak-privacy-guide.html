@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>客户端防 DNS 污染与隐私分流配置｜文章科普</title>
+  <meta name="description" content="从系统防护到 Clash/Sing-box 路由规则配置，避免 DNS 与 WebRTC 泄露。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="article-page-body">
+      <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <span class="logo-text">机场Fog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">机场推荐</a>
+        <a href="../knowledge.html">知识库</a>
+        <a href="../articles.html">文章科普</a>
+        <a href="../reviews.html">详细评测</a>
+        <a href="../about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+
+  
+  <!-- Header / Navigation Bar -->
+      
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">首页</a></li>
+        <li class="separator">/</li>
+        <li><a href="../articles.html">文章科普</a></li>
+        <li class="separator">/</li>
+        <li class="current">防 DNS 污染与隐私配置</li>
+      </ol>
+    </nav>
+
+    <!-- Article Hero Section -->
+    <section class="article-hero">
+      <h1 class="article-title">客户端防 DNS 污染与隐私分流配置</h1>
+      <div class="article-meta">
+        <span class="meta-item">2026年9月更新</span>
+        <span class="meta-dot">•</span>
+        <span class="meta-item">深度技术原理</span>
+      </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <div class="table-of-contents">
+      <div class="toc-title">文章目录</div>
+      <ul class="toc-list">
+        <li><a href="#section-1">一、DNS 污染与劫持机制原理</a></li>
+        <li><a href="#section-2">二、DoH/DoT 加密解析实战配置</a></li>
+        <li><a href="#section-3">三、WebRTC 泄露防范与浏览器设置</a></li>
+        <li><a href="#section-4">四、代理环境防泄露核查项</a></li>
+      </ul>
+    </div>
+
+    <section class="content-card">
+      <h2 id="section-1">一、DNS 污染与劫持机制原理</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        GFW 防火墙会在公网 UDP 53 端口响应到达前伪造错误的 IP 返回给客户端，造成 DNS 污染。
+      </p>
+    </section>
+
+    <section class="content-card">
+      <h2 id="section-2">二、DoH/DoT 加密解析实战配置</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        使用 DNS over HTTPS (DoH) 或 DNS over TLS (DoT) 对 DNS 探针加密，能有效拦截未加密的 DNS 拦截攻击。
+      </p>
+    </section>
+
+    <section class="content-card">
+      <h2 id="section-3">三、WebRTC 泄露防范与浏览器设置</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        WebRTC 插件可能绕过代理暴露本地真实局域网及公网 IP，可在浏览器中通过禁用 WebRTC 或安装防泄露插件予以屏蔽。
+      </p>
+    </section>
+
+    <section class="content-card">
+      <h2 id="section-4">四、代理环境防泄露核查项</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        定期访问 <code>browserleaks.com/dns</code> 进行在线检测，确保 DNS 查询均走代理通道而非本地运营商 DNS。
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer Section -->
+      
+
+  <script src="../script.js"></script>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 机场Fog 评测博客. 保留所有权利。</p>
+    </div>
+  </footer>
+</body>
+</html>

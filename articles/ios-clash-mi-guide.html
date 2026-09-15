@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iOS Clash Mi 使用教程：下载安装、订阅导入与常见报错排查｜知识库 - 机场Fog测评博客</title>
+  <meta name="description" content="2026 iOS/iPhone 苹果手机 Clash Mi 客户端教程：美区 App Store 下载、订阅 URL 导入、TUN 覆写模式及内存断连故障解决。">
+  <meta name="keywords" content="Clash Mi, iOS Clash, iPhone翻墙, mihomo, App Store, 订阅导入, 科学上网教程">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="article-page-body">
+      <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <span class="logo-text">机场Fog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">机场推荐</a>
+        <a href="../knowledge.html">知识库</a>
+        <a href="../articles.html">文章科普</a>
+        <a href="../reviews.html">详细评测</a>
+        <a href="../about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+
+  
+  <!-- Header / Navigation Bar -->
+      
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">首页</a></li>
+        <li class="separator">/</li>
+        <li><a href="../knowledge.html">知识库</a></li>
+        <li class="separator">/</li>
+        <li class="current">iOS Clash Mi 使用教程</li>
+      </ol>
+    </nav>
+
+    <!-- Article Hero Section -->
+    <section class="article-hero">
+      <h1 class="article-title">iOS Clash Mi 使用教程：下载安装、订阅导入与常见问题</h1>
+      <div class="article-meta">
+        <span class="meta-item">2026年9月更新</span>
+        <span class="meta-dot">•</span>
+        <span class="meta-item">iPhone / iPad 全平台适用 • 核心字数约1050字</span>
+      </div>
+    </section>
+
+    <!-- Article Main Layout -->
+    <section class="article-layout">
+      <article class="article-body">
+        
+        <div id="section-1" class="article-section">
+          <h2>一、Clash Mi 软件特色与优势</h2>
+          <p>
+            对于 iOS (iPhone/iPad) 用户而言，找寻一款界面简洁、内核强大且免费无广告的代理工具十分不易。<strong>Clash Mi</strong> 是一款内置 <code>mihomo</code> (Clash Meta) 内核的跨平台代理软件。不仅完美兼容市面上各类主流机场的加密协议（包括 Hysteria2、TUIC、VLESS 等），而且界面极其优雅清爽，没有杂乱广告与繁琐配置，极大地降低了苹果设备科学上网的门槛。
+          </p>
+        </div>
+
+        <div id="section-2" class="article-section">
+          <h2>二、获取与安装方式 (海外 Apple ID 说明)</h2>
+          <p>
+            受限于应用商店政策，中国大陆区 App Store 无法直接搜索到 Clash Mi。iOS 用户可通过以下途径下载：
+          </p>
+          <ul>
+            <li><strong>App Store 正式版下载</strong>：需要使用非国区（如美区、港区、日区等）Apple ID 登录 App Store 搜索“Clash Mi”获取安装。请务必在 App Store 内切换账号，切勿在 iPhone“设置”的主账号处登录非信任账号。</li>
+            <li><strong>TestFlight 开发者测试版</strong>：若拥有 TestFlight 邀请链接，可直接安装 Beta 版本体验最新内核特性（注意正式版与 Beta 版会相互覆盖）。</li>
+          </ul>
+        </div>
+
+        <div id="section-3" class="article-section">
+          <h2>三、三步快速导入订阅与开启连接</h2>
+          <p>
+            获取到 Clash 订阅链接后，仅需 3 步即可完成接入手续：
+          </p>
+          <ol>
+            <li><strong>添加配置链接</strong>：打开 Clash Mi 软件，切换至底部菜单的 <code>我的配置</code> 页面，点击右上角的 <code>+</code> 号图标，选择 <code>添加配置链接</code>，将机场订阅 URL 粘贴并保存。</li>
+            <li><strong>激活指定配置</strong>：导入成功后，配置列表中会生成对应的配置卡片。轻触点击该卡片使其处于“高亮勾选”状态，明确告知软件使用当前规则。</li>
+            <li><strong>启动 VPN 代理</strong>：返回 <code>首页</code>，点击屏幕中央大图标的连接按钮。首次连接时系统会弹窗提示“Clash Mi 想要添加 VPN 配置”，点击“允许”并输入 iPhone 解锁密码或完成 Face ID 认证即可。</li>
+          </ol>
+        </div>
+
+        <div id="section-4" class="article-section">
+          <h2>四、常见故障与 FAQ 排查</h2>
+          <p>
+            整理了新手在使用 Clash Mi 时最容易卡住的问题及解决方法：
+          </p>
+          <ul>
+            <li><strong>开启全局 (GLOBAL) 仍无法上网</strong>：iOS 端开启全局后，必须进入 <code>代理 -> GLOBAL</code> 分组中手动选择一个有效节点，不能让节点分组处于空置状态。</li>
+            <li><strong>点击连接后立刻断开</strong>：iOS 系统对网络扩展 (Network Extension) 有严格的内存限制（约为 50MB）。如果订阅规则集庞大（如包含过多 GeoIP/Geosite），极易触发系统强制杀进程。建议开启“TUN 覆写”并优化精简规则集。</li>
+            <li><strong>连接成功但流量为 0</strong>：检查订阅是否已到期或流量耗尽，在核心设置中尝试开启 TUN 覆写重新连接。</li>
+          </ul>
+        </div>
+
+      </article>
+
+      <!-- Sidebar Area -->
+      <aside class="article-sidebar">
+        <div class="sidebar-widget">
+          <h3 class="widget-title">此页内容</h3>
+          <ul class="sidebar-toc">
+            <li><a href="#section-1">一、Clash Mi 软件特色与优势</a></li>
+            <li><a href="#section-2">二、获取与安装方式 (Apple ID 说明)</a></li>
+            <li><a href="#section-3">三、三步快速导入订阅与开启连接</a></li>
+            <li><a href="#section-4">四、常见故障与 FAQ 排查</a></li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+      
+
+  <script src="../script.js"></script>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 机场Fog 评测博客. 保留所有权利。</p>
+    </div>
+  </footer>
+</body>
+</html>
