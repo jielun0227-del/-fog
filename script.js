@@ -41,6 +41,24 @@ const AIRPORTS_DATA = [
     desc: "九云主打白菜价超高性价比，月付6元起（150G流量），并提供不限时应急流量包，适配追剧与日常上网。"
   },
   {
+    id: "baoyun",
+    name: "宝云",
+    logo: "./images/baoyun_logo.png",
+    url: "https://888by.baoyundl.com/#/register?code=VW9FcakF",
+    priceText: "¥19 / ¥4·200GB/月",
+    annualPrice: 48,
+    monthlyPrice: 4.0,
+    monthlyTraffic: 200,
+    hasOneTime: true,
+    hasTrial: false,
+    lineType: "极速中转 / 优化节点",
+    unlockInfo: "4K 流媒体 / 社交 / AI 解锁",
+    tags: ["budget", "onetime"],
+    speedMbps: 860,
+    pingMs: 36,
+    desc: "宝云主打性价比杀手与防失联备用神器，月付4元起（200G），并提供29元起不限时一次性传承流量包。"
+  },
+  {
     id: "guangnianti",
     name: "光年梯",
     logo: "./images/guangnianti_logo.png",
