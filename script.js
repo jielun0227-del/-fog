@@ -23,6 +23,24 @@ const AIRPORTS_DATA = [
     desc: "快狸具备清晰的拓扑与优异的协议调度能力，线路晚高峰丢包率低。"
   },
   {
+    id: "jiuyun",
+    name: "九云",
+    logo: "./images/jiuyun_logo.png",
+    url: "https://888.jiuyundl.com/#/register?code=e5M4mtXM",
+    priceText: "¥99 / ¥6·150GB/月",
+    annualPrice: 99,
+    monthlyPrice: 6.0,
+    monthlyTraffic: 150,
+    hasOneTime: true,
+    hasTrial: false,
+    lineType: "高速中转 / 优化节点",
+    unlockInfo: "4K 流媒体 / 社交 / AI 解锁",
+    tags: ["budget", "onetime"],
+    speedMbps: 850,
+    pingMs: 35,
+    desc: "九云主打白菜价超高性价比，月付6元起（150G流量），并提供不限时应急流量包，适配追剧与日常上网。"
+  },
+  {
     id: "guangnianti",
     name: "光年梯",
     logo: "./images/guangnianti_logo.png",
