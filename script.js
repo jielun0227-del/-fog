@@ -8,7 +8,7 @@ const AIRPORTS_DATA = [
     id: "kuaili",
     name: "快狸",
     logo: "https://i.eoht.net/logo/kuaili_logo.webp",
-    url: "https://yyo649929.kuailiaff.com/#/register?code=EjqxPHQZ",
+    url: "https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdmZ",
     priceText: "¥120 / ¥10·30GB/月",
     annualPrice: 120,
     monthlyPrice: 10.0,

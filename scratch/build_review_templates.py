@@ -14,7 +14,7 @@ airports = {
         "read_time": "大约 8 分钟",
         "date": "2026-07-06",
         "logo": "kuaili.png",
-        "aff_url": "https://yyo649929.kuailiaff.com/#/register?code=EjqxPHQZ",
+        "aff_url": "https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdmZ",
         "line_tech": "IEPL 企业专线 · AnyTLS 协议伪装",
         "usage": "兼容 Clash / Shadowrocket / sing-box 客户端",
         "min_monthly": "¥15/月起 (Lite 150G)",
