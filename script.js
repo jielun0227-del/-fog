@@ -205,7 +205,7 @@ const AIRPORTS_DATA = [
   {
     id: "jinyun",
     name: "锦云",
-    logo: "./images/jinyun_logo.svg",
+    logo: "./images/jinyun_logo.png",
     url: "https://jybdw1.wanhlj.com:8888/#/register?code=JgBEyQvJ",
     priceText: "¥99 / ¥6·50GB/月",
     annualPrice: 99,
@@ -223,7 +223,7 @@ const AIRPORTS_DATA = [
   {
     id: "xiongmao",
     name: "熊猫 Cloud",
-    logo: "./images/xiongmao_logo.svg",
+    logo: "./images/xiongmao_logo.png",
     url: "https://cl888.cailudl.com:9999/#/register?code=GZVQJi34",
     priceText: "¥66 / ¥6·300GB/月",
     annualPrice: 66,
