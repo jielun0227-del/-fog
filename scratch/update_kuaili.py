@@ -68,7 +68,7 @@ kuaili_html = """<!DOCTYPE html>
                         </div>
 
                         <div class="action-btn-wrap" style="text-align: center;">
-                            <a href="https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdmZ" target="_blank" rel="nofollow noopener noreferrer" class="btn-oval-action">
+                            <a href="https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdm" target="_blank" rel="nofollow noopener noreferrer" class="btn-oval-action">
                                 查看 快狸机场 当前套餐与订阅
                             </a>
                         </div>
@@ -106,7 +106,7 @@ kuaili_html = """<!DOCTYPE html>
                                   <td>¥120.00 /年</td>
                                   <td>年付</td>
                                   <td>不限设备</td>
-                                  <td><a href="https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdmZ" target="_blank" class="btn-table-buy">查看订阅</a></td>
+                                  <td><a href="https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdm" target="_blank" class="btn-table-buy">查看订阅</a></td>
                                 </tr>
                                 <tr>
                                   <td><strong>月狸月付小套餐</strong></td>
@@ -115,7 +115,7 @@ kuaili_html = """<!DOCTYPE html>
                                   <td>¥15.00 /月</td>
                                   <td>月付</td>
                                   <td>不限设备</td>
-                                  <td><a href="https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdmZ" target="_blank" class="btn-table-buy">查看订阅</a></td>
+                                  <td><a href="https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdm" target="_blank" class="btn-table-buy">查看订阅</a></td>
                                 </tr>
                                 <tr>
                                   <td><strong>小狸基础版</strong></td>
@@ -124,7 +124,7 @@ kuaili_html = """<!DOCTYPE html>
                                   <td>¥22.00 /月</td>
                                   <td>月付 / 季付 / 半年付 / 年付</td>
                                   <td>不限设备</td>
-                                  <td><a href="https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdmZ" target="_blank" class="btn-table-buy">查看订阅</a></td>
+                                  <td><a href="https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdm" target="_blank" class="btn-table-buy">查看订阅</a></td>
                                 </tr>
                                 <tr>
                                   <td><strong>灵狸标准版</strong></td>
@@ -133,7 +133,7 @@ kuaili_html = """<!DOCTYPE html>
                                   <td>¥35.00 /月</td>
                                   <td>月付 / 季付 / 半年付 / 年付</td>
                                   <td>不限设备</td>
-                                  <td><a href="https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdmZ" target="_blank" class="btn-table-buy">查看订阅</a></td>
+                                  <td><a href="https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdm" target="_blank" class="btn-table-buy">查看订阅</a></td>
                                 </tr>
                                 <tr>
                                   <td><strong>夜狸强化版</strong></td>
@@ -142,7 +142,7 @@ kuaili_html = """<!DOCTYPE html>
                                   <td>¥95.00 /月</td>
                                   <td>月付 / 季付 / 半年付 / 年付</td>
                                   <td>不限设备</td>
-                                  <td><a href="https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdmZ" target="_blank" class="btn-table-buy">查看订阅</a></td>
+                                  <td><a href="https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdm" target="_blank" class="btn-table-buy">查看订阅</a></td>
                                 </tr>
                                 <tr>
                                   <td><strong>天狸顶配版</strong></td>
@@ -151,7 +151,7 @@ kuaili_html = """<!DOCTYPE html>
                                   <td>¥180.00 /月</td>
                                   <td>月付 / 季付 / 半年付 / 年付</td>
                                   <td>不限设备</td>
-                                  <td><a href="https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdmZ" target="_blank" class="btn-table-buy">查看订阅</a></td>
+                                  <td><a href="https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdm" target="_blank" class="btn-table-buy">查看订阅</a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -185,7 +185,7 @@ kuaili_html = """<!DOCTYPE html>
                     <div class="bottom-action-banner">
                         <h3>准备好体验极致高速稳定的 IEPL 专线了吗？</h3>
                         <p>点击下方按钮直接前往快狸机场官方通道注册订购：</p>
-                        <a href="https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdmZ" target="_blank" rel="nofollow noopener noreferrer" class="btn-oval-action">
+                        <a href="https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdm" target="_blank" rel="nofollow noopener noreferrer" class="btn-oval-action">
                             立即前往 快狸机场 官网注册
                         </a>
                     </div>

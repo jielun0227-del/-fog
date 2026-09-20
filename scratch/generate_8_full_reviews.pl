@@ -15,7 +15,7 @@ my %reviews = (
         word_count => "约 2500 字",
         read_time => "大约 8 分钟",
         date => "2026-07-06",
-        aff_url => "https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdmZ",
+        aff_url => "https://aolaiyun01.kuailiaff.com/#/?code=OYKzjZdm",
         line_tech => "IEPL 企业专线 · AnyTLS 协议伪装",
         usage => "兼容 Clash / Shadowrocket / sing-box 客户端",
         min_monthly => "¥15/月起 (Lite 150G)",
