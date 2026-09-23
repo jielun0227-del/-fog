@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>海外 Apple ID 账号密码实时共享与安全登录指南｜文章科普</title>
+  <meta name="description" content="2026年8月最新更新海外Apple ID（美区/日区/韩区等）免费共享账号密码列表。详细讲解在iOS App Store安全登录、下载Shadowrocket（小火箭）/sing-box等工具的步骤与防锁机安全铁律。">
+  <meta name="keywords" content="海外Apple ID, 美区Apple ID, 苹果共享账号, 免费Apple ID, 小火箭下载, Shadowrocket, App Store跨区登录, 苹果ID防锁">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .account-table-container {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border-color, #e5e7eb);
+      border-radius: 8px;
+    }
+    .account-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    .account-table th {
+      background: rgba(0, 0, 0, 0.03);
+      color: var(--text-primary);
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border-color, #e5e7eb);
+    }
+    .account-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color, #e5e7eb);
+      color: var(--text-muted);
+    }
+    .account-table tr:last-child td {
+      border-bottom: none;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+    }
+    .code-text {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .warning-box-custom {
+      background: rgba(239, 68, 68, 0.05);
+      border-left: 4px solid #ef4444;
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+    }
+    .warning-box-custom h3 {
+      color: #dc2626;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body class="article-page-body">
+  <!-- Header / Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <span class="logo-text">机场Fog</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../index.html">机场推荐</a>
+        <a href="../knowledge.html">知识库</a>
+        <a href="../articles.html">文章科普</a>
+        <a href="../reviews.html">详细评测</a>
+        <a href="../about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="../index.html">首页</a></li>
+        <li class="separator">/</li>
+        <li><a href="../articles.html">文章科普</a></li>
+        <li class="separator">/</li>
+        <li class="current">海外 Apple ID 账号共享指南</li>
+      </ol>
+    </nav>
+
+    <!-- Article Hero Section -->
+    <section class="article-hero">
+      <h1 class="article-title">海外 Apple ID 账号密码实时共享与安全登录指南</h1>
+      <div class="article-meta">
+        <span class="meta-item">2026年8月24日更新</span>
+        <span class="meta-dot">•</span>
+        <span class="meta-item">深度阅读与指南</span>
+      </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <div class="table-of-contents">
+      <div class="toc-title">文章目录</div>
+      <ul class="toc-list">
+        <li><a href="#section-1">一、海外 Apple ID 共享背景与注意事项</a></li>
+        <li><a href="#section-2">二、2026年最新外区共享 Apple ID 账号密码表</a></li>
+        <li><a href="#section-3">三、安全登录 App Store 下载应用（防锁机避坑铁律）</a></li>
+        <li><a href="#section-4">四、常见问题排障与个人独享账号注册建议</a></li>
+      </ul>
+    </div>
+
+    <!-- Section 1 -->
+    <section class="content-card">
+      <h2 id="section-1">一、海外 Apple ID 共享背景与注意事项</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        因 App Store 的区域网络政策差异，许多网络工具与代理客户端（如 Shadowrocket 小火箭、sing-box、Quantumult X 等）无法在大陆区 App Store 直接搜索和下载。为了方便广大 iOS 用户快速获取所需客户端，机场Fog 团队整理并维护了最新可用的外区公共 Apple ID 共享账号。
+      </p>
+      <p style="color: var(--text-muted); line-height: 1.8; margin-top: 0.75rem;">
+        共享账号适合临时下载免费应用或已购应用使用。在使用前，请务必仔细阅读防锁机守则，切勿随意更改账号配置，以免造成不必要的设备异常。
+      </p>
+
+      <div class="warning-box-custom">
+        <h3>⚠️ 核心安全警告（违反可能导致手机变砖）</h3>
+        <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 0.5rem;"><strong>1. 严禁在【设置 (Settings)】或【iCloud】中登录共享账号！</strong><br>
+        共享账号仅用于在 <strong>App Store（应用商店）</strong> 登录下载应用。如果误登录到手机设置中，一旦账号被苹果安全机制锁定或他人修改密码，你的设备将面临无法解绑 iCloud 甚至触发激活锁变成“板砖”的风险。</p>
+        <p style="color: var(--text-muted); line-height: 1.7; margin: 0;"><strong>2. 下载完成后请立即退出登录！</strong><br>
+        公共账号多人共享，随时可能因异地登录触发验证。下载完所需应用后，请第一时间在 App Store 底部退出共享 ID，换回你的个人主账号。</p>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="content-card">
+      <h2 id="section-2">二、2026年最新外区共享 Apple ID 账号密码表</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        以下账号保持定期维护。如遇提示密码错误或账号锁定，通常是由于部分用户频繁错误登录触发风控，请耐心等待后台自动解锁刷新。
+      </p>
+
+      <div class="account-table-container">
+        <table class="account-table">
+          <thead>
+            <tr>
+              <th>地区</th>
+              <th>账号 (Apple ID)</th>
+              <th>密码 (Password)</th>
+              <th>状态</th>
+              <th>更新时间</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">13912911183@163.com</span></td>
+              <td><span class="code-text">eq1yn9gRpF</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">13955617626@163.com</span></td>
+              <td><span class="code-text">DnXGAyP8ph</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">18622662562@163.com</span></td>
+              <td><span class="code-text">Q7HhFH16DU</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">15802630166@163.com</span></td>
+              <td><span class="code-text">t45hkPeg8S</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">13573305199@163.com</span></td>
+              <td><span class="code-text">65ngetc7AN</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">1907792275@qq.com</span></td>
+              <td><span class="code-text">uUhPn5GgrV</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">13854677020@163.com</span></td>
+              <td><span class="code-text">Ar1sK4c56w</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">18270828551@163.com</span></td>
+              <td><span class="code-text">PG8HZuheNn</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">13819192265@163.com</span></td>
+              <td><span class="code-text">kZubhx3Ua3</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">18235265599@163.com</span></td>
+              <td><span class="code-text">KtmUVVf28h</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">13890266156@163.com</span></td>
+              <td><span class="code-text">w7Z6EZMgzx</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">18604675215@163.com</span></td>
+              <td><span class="code-text">Q357AtRwHQ</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">1365754042@qq.com</span></td>
+              <td><span class="code-text">s3phFxRQP3</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">13572257623@163.com</span></td>
+              <td><span class="code-text">UG9TNbHvw7</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">18658062088@163.com</span></td>
+              <td><span class="code-text">A2Z1YVQhQ1</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">15830449653@163.com</span></td>
+              <td><span class="code-text">Wg16mZbKGp</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">13512904429@163.com</span></td>
+              <td><span class="code-text">cU6APhcMeE</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">13941805960@163.com</span></td>
+              <td><span class="code-text">mcj8g7rYbz</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">13436507280@163.com</span></td>
+              <td><span class="code-text">qctadDa8Wh</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">13857750360@163.com</span></td>
+              <td><span class="code-text">etEZQ72a8b</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">13814142777@163.com</span></td>
+              <td><span class="code-text">jcSRKuQPk2</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">13592914548@163.com</span></td>
+              <td><span class="code-text">ZJ1MdSQQrX</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">15215187621@163.com</span></td>
+              <td><span class="code-text">zRK3w4qCWY</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">17709883200@163.com</span></td>
+              <td><span class="code-text">4BNgHPDdv6</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">18095074597@163.com</span></td>
+              <td><span class="code-text">CZt63VR35z</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">ShannonWells76391@outlook.com</span></td>
+              <td><span class="code-text">NRAWwfwD2K</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>美国 (US)</td>
+              <td><span class="code-text">WilliamPacheco71269d@outlook.com</span></td>
+              <td><span class="code-text">S48cQPJecF</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>韩国 (KR)</td>
+              <td><span class="code-text">JoelWoodrqu@outlook.com</span></td>
+              <td><span class="code-text">ENg2qnX7RM</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 22:29</td>
+            </tr>
+            <tr>
+              <td>中国大陆 (CN)</td>
+              <td><span class="code-text">LettaSox6961@outlook.com</span></td>
+              <td><span class="code-text">Zt5emT7e12</span></td>
+              <td><span class="status-badge">正常</span></td>
+              <td>2026-08-24 23:30</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="content-card">
+      <h2 id="section-3">三、安全登录 App Store 下载应用（防锁机避坑铁律）</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        请按以下标准化步骤进行切换登录：
+      </p>
+      <ul style="margin-left: 1.5rem; color: var(--text-muted); line-height: 1.8; margin-top: 0.5rem;">
+        <li><strong>步骤 1：打开 App Store 并退出原账号</strong><br>打开 iPhone 或 iPad 上的 <strong>App Store</strong>，点击右上方个人头像图标。滑动到最下方点击 <strong>“退出登录 (Sign Out)”</strong>。</li>
+        <li><strong>步骤 2：登录共享海外 Apple ID</strong><br>在顶部账户名与密码框中，粘贴上方提供的共享账号与密码，点击 <strong>“登录 (Sign In)”</strong>。</li>
+        <li><strong>步骤 3：跳过双重认证绑定（关键）</strong><br>如果登录时弹出“Apple ID 安全”或“开启双重认证”提示，<strong>千万不要点击继续绑定你自己的手机号！</strong> 请选择 <strong>“其他选项” -> “不升级”</strong> 即可跳过设置。</li>
+        <li><strong>步骤 4：搜索下载应用并及时登出</strong><br>商店页面切换后，即可搜索并下载所需的出海应用（如 sing-box、Shadowrocket 等）。下载完毕后，再次点击 App Store 右上角头像拉到底部选择退出登录，恢复你自己的个人账号。</li>
+      </ul>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="content-card">
+      <h2 id="section-4">四、常见问题排障与个人独享账号注册建议</h2>
+      <p style="color: var(--text-muted); line-height: 1.8;">
+        <strong>Q1: 为什么提示“账号已被锁定/禁用”？</strong><br>
+        公共共享账号同一时间内登录人数较多，或部分用户操作不当触发苹果风控。遇到此类提示请换一个备用账号，或稍后再试。
+      </p>
+      <p style="color: var(--text-muted); line-height: 1.8; margin-top: 0.75rem;">
+        <strong>Q2: 已经安装的 App 无法更新怎么办？</strong><br>
+        iOS 应用更新需校验原下载账号。使用共享 ID 下载的应用若需更新，建议卸载原 App 后重新使用当前可用的共享 ID 重新下载。
+      </p>
+      <p style="color: var(--text-muted); line-height: 1.8; margin-top: 0.75rem;">
+        <strong>Q3: 如何拥有一个永久属于自己的美区 Apple ID？</strong><br>
+        如果需要长期稳定使用，建议参考我们的 <a href="ios-clash-mi-guide.html">iOS 客户端配置指南</a> 或在电脑浏览器环境通过苹果官网免费注册一个纯洁度较高的独享美区账号，绑定个人邮箱后即可一劳永逸使用。
+      </p>
+    </section>
+
+  </main>
+
+  <script src="../script.js"></script>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 机场Fog 评测博客. 保留所有权利。</p>
+    </div>
+  </footer>
+</body>
+</html>
