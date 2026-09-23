@@ -15,7 +15,7 @@ const AIRPORTS_DATA = [
     monthlyTraffic: 30,
     hasOneTime: false,
     hasTrial: false,
-    lineType: "高速隧道中转",
+    lineType: "IEPL/IPLC 专线",
     unlockInfo: "Netflix / YouTube / ChatGPT",
     tags: [],
     speedMbps: 760,
