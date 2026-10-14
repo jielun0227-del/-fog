@@ -1,4 +1,4 @@
-# IndexNow 批量自动提交脚本 (支持 Bing / Yandex / IndexNow)
+# IndexNow Batch URL Submission Script (Bing / Yandex / IndexNow)
 param(
     [string]$SitemapPath = ".\sitemap.xml",
     [string]$HostName = "jichangfog.com",
@@ -6,13 +6,13 @@ param(
 )
 
 if (-not (Test-Path $SitemapPath)) {
-    Write-Error "找不到网站地图文件: $SitemapPath"
+    Write-Error "Cannot find sitemap file: $SitemapPath"
     exit 1
 }
 
 [xml]$xml = Get-Content $SitemapPath
 $urls = @($xml.urlset.url.loc)
-Write-Host "解析到 $($urls.Count) 个 URL，准备提交至 IndexNow..." -ForegroundColor Cyan
+Write-Host "Found $($urls.Count) URLs from sitemap. Submitting to IndexNow..." -ForegroundColor Cyan
 
 $body = @{
     host = $HostName
@@ -29,9 +29,9 @@ $endpoints = @(
 foreach ($endpoint in $endpoints) {
     try {
         $response = Invoke-WebRequest -Uri $endpoint -Method POST -ContentType "application/json; charset=utf-8" -Body $body -UseBasicParsing -TimeoutSec 20
-        Write-Host "[$endpoint] 提交成功: 状态码 $($response.StatusCode)" -ForegroundColor Green
+        Write-Host "[$endpoint] Success: HTTP $($response.StatusCode)" -ForegroundColor Green
     } catch {
-        Write-Host "[$endpoint] 提交失败: $_" -ForegroundColor Red
+        Write-Host "[$endpoint] Failed: $_" -ForegroundColor Red
     }
 }
-Write-Host "IndexNow 提交完成！" -ForegroundColor Green
+Write-Host "IndexNow submission completed!" -ForegroundColor Green
